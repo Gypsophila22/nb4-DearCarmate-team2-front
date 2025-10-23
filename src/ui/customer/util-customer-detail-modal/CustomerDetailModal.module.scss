@@ -1,0 +1,47 @@
+.container {
+  .title {
+    @include glyph22Bold;
+    margin-bottom: 38px;
+    text-align: center;
+  }
+
+  .contentContainer {
+    margin-bottom: 40px;
+
+    .field {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .label {
+      @include glyph16Medium(20px);
+      padding: 19px 24px 19px 0;
+    }
+
+    .value {
+      @include glyph16Regular(20px);
+      padding: 19px 24px 19px 0;
+      word-break: break-all;
+
+      &.memo {
+        max-height: 240px;
+        overflow-y: scroll;
+        white-space: pre-line;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 6.5px;
+          background-color: $gray-brt3;
+        }
+      }
+    }
+  }
+
+  .buttonWrapper {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

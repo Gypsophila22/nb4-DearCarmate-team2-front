@@ -1,0 +1,38 @@
+.container {
+  @include flexbox(8px, row, flex-start, center);
+  width: fit-content;
+  cursor: pointer;
+
+  .outerCircle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    transition: box-shadow 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px inset $gray-brt3;
+
+    .innerCircle {
+      width: 10px;
+      height: 10px;
+      transition: background-color 0.3s;
+      border-radius: 50%;
+    }
+  }
+
+  &.selected {
+    .outerCircle {
+      box-shadow: 0 0 0 1px inset $red;
+    }
+
+    .innerCircle {
+      background-color: $red;
+    }
+  }
+
+  .label {
+    @include glyph14Regular;
+  }
+}

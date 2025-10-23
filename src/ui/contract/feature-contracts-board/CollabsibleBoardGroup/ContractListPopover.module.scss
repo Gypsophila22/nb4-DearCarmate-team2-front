@@ -1,0 +1,30 @@
+.popover {
+  width: 420px;
+  padding: 16px;
+  animation: fadeI 0.4s;
+  border-radius: 4px;
+  background-color: $white;
+  box-shadow: 0 0 0 1px inset $gray-brt4;
+
+  .contentContainer {
+    @include flexbox(16px, column);
+
+    .title {
+      @include glyph16Bold;
+    }
+
+    .cardsWrapper {
+      @include flexbox(16px, column);
+      max-height: 436px;
+      overflow-y: scroll;
+    }
+
+    .empty {
+      @include flexbox(normal, row, center, center);
+      @include glyph14Medium;
+      width: 100%;
+      height: 436px;
+      color: $gray-brt4;
+    }
+  }
+}

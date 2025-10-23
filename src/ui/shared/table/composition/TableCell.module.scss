@@ -1,0 +1,10 @@
+.cell {
+  @include ellipsis;
+  height: 66px;
+  padding-inline: 20px;
+  text-align: left;
+
+  &.isLast {
+    cursor: default;
+  }
+}

@@ -1,0 +1,16 @@
+:root {
+  /* colors */
+  --black: #212121;
+  --gray-brt1: #4a4a4a;
+  --gray-brt2: #888888;
+  --gray-brt3: #b5b5b5;
+  --gray-brt4: #e1e1e1;
+  --gray-brt5: #f3f5fb;
+  --gray-brt6: #f8f9fd;
+  --white: #ffffff;
+  --red: #c41013;
+  --blue: #2563eb;
+
+  /* element height */
+  --gnb-height: 80px;
+}

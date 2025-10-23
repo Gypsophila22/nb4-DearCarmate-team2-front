@@ -1,0 +1,13 @@
+.header {
+  @include flexbox(normal, row, space-between, center);
+  width: 1600px;
+  margin-bottom: 24px;
+
+  .left {
+    @include flexbox(12px, row, flex-start, center);
+  }
+
+  .buttonContainer {
+    @include flexbox(12px, row, flex-start, center);
+  }
+}

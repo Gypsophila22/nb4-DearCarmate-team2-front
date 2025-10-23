@@ -1,0 +1,12 @@
+.overlay {
+  @include flexbox(normal, row, center, center);
+  position: fixed;
+  z-index: 10000;
+  overflow: hidden;
+  animation: fadeI 0.2s;
+  inset: 0;
+
+  &.hasBackDrop {
+    background-color: rgb(0 0 0 / 40%);
+  }
+}

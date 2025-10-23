@@ -1,0 +1,9 @@
+.container {
+  width: 1600px;
+  margin-bottom: 100px;
+
+  .title {
+    @include glyph28Bold;
+    margin-bottom: 60px;
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+
+  .trigger {
+    @include flexbox(normal, row, center, center);
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $gray-brt3;
+
+    &.isFiltered {
+      box-shadow: 0 0 0 1px inset $black;
+    }
+  }
+
+  .popoverWrapper {
+    position: absolute;
+    top: 46px;
+    width: 116px;
+  }
+}

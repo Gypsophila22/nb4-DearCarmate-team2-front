@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+  width: fit-content;
+
+  .imageWrapper {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    border: 1px solid $gray-brt3;
+    border-radius: 50%;
+    background-color: $white;
+
+    .image {
+      object-fit: cover;
+    }
+  }
+
+  .editButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+}

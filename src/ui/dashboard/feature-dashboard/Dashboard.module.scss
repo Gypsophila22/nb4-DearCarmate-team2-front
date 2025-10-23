@@ -1,0 +1,13 @@
+.container {
+  width: fit-content;
+
+  .chartsContainer {
+    @include flexbox(16px, row);
+    margin-top: 24px;
+  }
+}
+
+.loading {
+  width: 810px;
+  height: 503px;
+}

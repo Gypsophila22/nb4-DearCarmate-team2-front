@@ -1,0 +1,9 @@
+.container {
+  position: relative;
+
+  .title {
+    @include glyph22Bold;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+}

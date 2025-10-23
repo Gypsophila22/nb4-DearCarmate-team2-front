@@ -1,0 +1,10 @@
+.container {
+  @include flexbox(normal, row, flex-start, stretch);
+  height: calc(100vh - $gnb-height);
+
+  .contentWrapper {
+    flex-grow: 1;
+    padding: 60px;
+    overflow-y: scroll;
+  }
+}

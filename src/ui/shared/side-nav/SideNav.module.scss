@@ -1,0 +1,43 @@
+.container {
+  min-width: 200px;
+  border-right: 1px solid $gray-brt4;
+  background-color: $white;
+
+  .menuContainer {
+    @include flexbox(normal, column, flex-start, stretch);
+    position: sticky;
+    top: calc($gnb-height + 40px);
+    right: 0;
+    left: 0;
+
+    .menu {
+      @include flexbox(12px, row, flex-start, center);
+      @include glyph14Regular;
+      position: relative;
+      padding: 15.5px 24px;
+      transition: background-color 0.3s ease-out;
+      color: $gray-brt2;
+
+      &:hover {
+        background-color: $gray-brt6;
+      }
+
+      &.active {
+        background-color: $gray-brt5;
+        color: $gray-brt1;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 2px;
+          height: 18px;
+          transform: translateY(-50%);
+          background-color: $red;
+        }
+      }
+    }
+  }
+}

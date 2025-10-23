@@ -1,0 +1,8 @@
+.container {
+  width: 420px;
+
+  .inputs {
+    @include flexbox(24px, column, flex-start, stretch);
+    margin-bottom: 40px;
+  }
+}

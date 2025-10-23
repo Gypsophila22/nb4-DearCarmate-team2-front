@@ -1,0 +1,65 @@
+.popup {
+  z-index: 100;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: $white;
+  box-shadow: 0 0 0 1px inset $gray-brt4;
+
+  .selectMenu {
+    @include flexbox(2px, column, flex-start, stretch);
+    max-height: 184px;
+    padding: 4px;
+    overflow-y: overlay;
+
+    .item {
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+      border-radius: 4px;
+
+      .text {
+        @include glyph14Regular;
+        margin: 8px 16px;
+        color: $gray-brt2;
+        text-align: center;
+      }
+
+      &:hover {
+        background-color: $gray-brt5;
+
+        .text {
+          color: $gray-brt1;
+        }
+      }
+    }
+  }
+
+  &.hasSearch {
+    .searchInputWrapper {
+      padding: 8px 16px;
+    }
+
+    .selectMenu {
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: $gray-brt4;
+      }
+
+      .text {
+        text-align: left;
+      }
+
+      .emptySearch {
+        @include glyph14Medium;
+        margin: 46px auto 100px;
+        color: $gray-brt4;
+        text-align: center;
+      }
+    }
+  }
+}

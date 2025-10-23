@@ -1,0 +1,18 @@
+.container {
+  .inputs {
+    @include flexbox(24px, column, flex-start, stretch);
+    margin-bottom: 36px;
+
+    .halfWidthInputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+
+  .buttonContainer {
+    @include flexbox(12px, row);
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

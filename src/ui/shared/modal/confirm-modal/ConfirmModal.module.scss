@@ -1,0 +1,9 @@
+.container {
+  @include flexbox(50px, column, flex-start, center);
+}
+
+.text {
+  @include glyph16Regular;
+  margin-top: 60px;
+  text-align: center;
+}

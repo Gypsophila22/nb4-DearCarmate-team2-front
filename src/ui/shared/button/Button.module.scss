@@ -1,0 +1,38 @@
+.container {
+  flex-shrink: 0;
+  border-radius: 4px;
+  text-align: center;
+
+  &.small {
+    @include glyph14Medium;
+    min-width: 90px;
+    padding: 9px 20px;
+  }
+
+  &.large {
+    @include glyph16Medium(50px);
+    width: 100%;
+    height: 50px;
+  }
+
+  &.red {
+    background-color: $red;
+    color: $white;
+  }
+
+  &.gray {
+    background-color: $gray-brt5;
+    color: $gray-brt1;
+  }
+
+  &.outline {
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $red;
+    color: $red;
+  }
+
+  &:disabled {
+    background-color: $gray-brt2;
+    color: $white;
+  }
+}

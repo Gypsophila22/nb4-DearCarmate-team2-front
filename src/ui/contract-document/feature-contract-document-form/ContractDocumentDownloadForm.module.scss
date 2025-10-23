@@ -1,0 +1,17 @@
+.container {
+  .items {
+    @include flexbox(12px, column);
+    margin-bottom: 40px;
+
+    .item {
+      @include flexbox(8px, row, flex-start, center);
+      @include glyph14Regular;
+    }
+  }
+
+  .buttonContainer {
+    @include flexbox(12px, row);
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

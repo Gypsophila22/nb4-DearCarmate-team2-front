@@ -1,0 +1,32 @@
+.container {
+  .trigger {
+    @include flexbox(6px, row, flex-start, center);
+    width: 186px;
+    height: 40px;
+    padding-inline: 10px;
+    transition:
+      box-shadow 0.4s ease,
+      background-color 0.2s ease;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $gray-brt4;
+
+    &.isOpened {
+      box-shadow: 0 0 0 1px inset $black;
+    }
+
+    &.isOver {
+      background-color: $gray-brt3;
+    }
+
+    .title {
+      @include glyph14Medium;
+    }
+  }
+
+  .popoverWrapper {
+    position: relative;
+    top: 8px;
+    right: 234px;
+  }
+}

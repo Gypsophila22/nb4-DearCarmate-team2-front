@@ -1,0 +1,38 @@
+.alarmField {
+  .top {
+    @include flexbox(12px, row, space-between);
+    margin-bottom: 8px;
+  }
+
+  .bottom {
+    @include flexbox(60px, row, flex-start, center);
+    position: relative;
+
+    .label {
+      @include flexbox(2px, row, flex-start, center);
+      @include glyph14Regular;
+      padding-left: 6px;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 2px;
+        height: 19px;
+        transform: translateY(-50%);
+        background-color: $red;
+      }
+    }
+
+    .checkboxField {
+      @include flexbox(32px, row, flex-start, center);
+
+      .checkbox {
+        @include flexbox(8px, row, flex-start, center);
+        @include glyph14Regular;
+      }
+    }
+  }
+}

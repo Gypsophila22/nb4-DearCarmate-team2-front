@@ -1,0 +1,23 @@
+.container {
+  @include flexbox(48px, column, flex-start, stretch);
+  width: 520px;
+
+  .inputs {
+    @include flexbox(32px, column, flex-start, stretch);
+  }
+
+  .button {
+    margin-bottom: 24px;
+  }
+}
+
+.message {
+  @include glyph15Medium;
+  text-align: center;
+
+  .signup {
+    margin-left: 4px;
+    color: $red;
+    text-decoration: underline;
+  }
+}

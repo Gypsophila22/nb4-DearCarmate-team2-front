@@ -1,0 +1,12 @@
+.container {
+  @include flexbox(16px, row);
+
+  .collabsibleGroupWrapper {
+    margin-top: 40px;
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 700px;
+}

@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+
+  .trigger {
+    @include flexbox(normal, row, space-between, center);
+    width: 100%;
+    padding-inline: 20px;
+    transition: box-shadow 0.4s ease;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $gray-brt3;
+
+    .selectedOption {
+      @include glyph14Regular;
+
+      &:not(.selected) {
+        color: $gray-brt3;
+      }
+    }
+  }
+
+  .popoverWrapper {
+    position: relative;
+    top: 6px;
+  }
+
+  &.search {
+    width: 180px;
+
+    .trigger {
+      height: 40px;
+
+      &.isOpened {
+        box-shadow: 0 0 0 1px inset $black;
+      }
+    }
+  }
+
+  &.modal {
+    width: 100%;
+
+    .trigger {
+      height: 48px;
+    }
+  }
+}

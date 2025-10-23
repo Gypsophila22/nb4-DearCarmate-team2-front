@@ -1,0 +1,30 @@
+.container {
+  @include flexbox(12px, row);
+  width: fit-content;
+
+  .pageNumContainer {
+    @include flexbox(10px, row);
+  }
+
+  .button {
+    @include flexbox(normal, row, center, center);
+    @include glyph14Medium;
+    min-width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $gray-brt3;
+    color: $gray-brt1;
+
+    &.disabled,
+    &.selected {
+      pointer-events: none;
+    }
+
+    &.selected {
+      background-color: $red;
+      box-shadow: 0 0 0 1px inset $red;
+      color: $white;
+    }
+  }
+}

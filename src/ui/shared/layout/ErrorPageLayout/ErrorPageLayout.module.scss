@@ -1,0 +1,40 @@
+.pageWrapper {
+  height: 100vh;
+
+  .contentContainer {
+    @include flexbox(32px, column, flex-start, center);
+    position: relative;
+    top: 50%;
+    width: fit-content;
+    margin: 0 auto;
+    transform: translateY(-50%);
+
+    .statusCode {
+      color: $red;
+      font-size: 140px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .description {
+      @include flexbox(16px, column, flex-start, center);
+
+      .title {
+        @include glyph16Medium;
+      }
+
+      .message {
+        @include glyph14Regular;
+        color: $gray-brt2;
+      }
+    }
+
+    .buttonContainer {
+      @include flexbox(8px, row);
+
+      .buttonWrapper {
+        width: 240px;
+      }
+    }
+  }
+}

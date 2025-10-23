@@ -1,0 +1,25 @@
+.overlay {
+  @include flexbox(normal, row, center, center);
+  position: fixed;
+  overflow: hidden;
+  animation: fadeI 0.2s;
+  background-color: rgb(0 0 0 / 70%);
+  inset: 0;
+
+  &:has(.form) {
+    z-index: 1000;
+  }
+
+  &:has(.confirm) {
+    z-index: 1001;
+  }
+
+  .container {
+    position: absolute;
+    width: 510px;
+    padding: 40px 24px;
+    animation: fadeIn 0.6s ease normal;
+    border-radius: 4px;
+    background-color: $white;
+  }
+}

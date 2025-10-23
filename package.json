@@ -1,0 +1,53 @@
+{
+  "name": "project-dearcarmate-fe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.28.9",
+    "axios": "^1.6.8",
+    "chart.js": "^4.4.2",
+    "classnames": "^2.5.1",
+    "cookies-next": "^4.1.1",
+    "date-fns": "^3.6.0",
+    "debounce": "^2.0.0",
+    "next": "14.1.4",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-datepicker": "^6.6.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.2",
+    "superstruct": "^1.0.4",
+    "uuid": "^9.0.1",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.28.6",
+    "@tanstack/react-query-devtools": "^5.28.10",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.4",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "sass": "^1.72.0",
+    "stylelint-config-property-sort-order-smacss": "^10.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-scss": "^6.2.1",
+    "typescript": "^5"
+  }
+}

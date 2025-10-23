@@ -1,0 +1,11 @@
+.container {
+  .previewFilesContainer {
+    @include flexbox(12px, column);
+    margin-bottom: 12px;
+
+    .item {
+      @include flexbox(8px, row, flex-start, center);
+      @include glyph14Regular;
+    }
+  }
+}

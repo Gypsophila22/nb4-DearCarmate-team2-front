@@ -1,0 +1,41 @@
+.container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.wrapper {
+  @include flexbox(8px, row, space-between, center);
+  height: 48px;
+  padding-inline: 20px;
+  transition: box-shadow 0.4s ease;
+  border-radius: 4px;
+  background-color: $white;
+  box-shadow: 0 0 0 1px inset $gray-brt3;
+
+  &:has(.input:focus) {
+    box-shadow: 0 0 0 1px inset $black;
+  }
+
+  &:has(.input.error) {
+    box-shadow: 0 0 0 1px inset $red;
+  }
+
+  &:has(.input.dropdownInput) {
+    box-shadow: 0 0 0 1px inset $gray-brt4;
+  }
+
+  .input {
+    @include glyph14Regular(16px);
+    flex: 1;
+    min-width: 0;
+
+    &::placeholder {
+      color: $gray-brt3;
+    }
+
+    &:disabled {
+      color: $gray-brt2;
+    }
+  }
+}

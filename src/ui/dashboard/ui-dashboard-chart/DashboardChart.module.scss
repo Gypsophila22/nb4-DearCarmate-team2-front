@@ -1,0 +1,12 @@
+.container {
+  width: 397px;
+  height: 321px;
+  padding: 32px;
+  border-radius: 4px;
+  background-color: $white;
+
+  .title {
+    @include glyph18Medium;
+    margin-bottom: 24px;
+  }
+}

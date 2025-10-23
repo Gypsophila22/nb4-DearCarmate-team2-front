@@ -1,0 +1,11 @@
+.empty {
+  width: fit-content;
+  margin: 70px auto 120px;
+
+  .text {
+    @include glyph18Medium;
+    margin-top: 16px;
+    color: $gray-brt4;
+    text-align: center;
+  }
+}

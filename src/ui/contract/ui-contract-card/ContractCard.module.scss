@@ -1,0 +1,54 @@
+.container {
+  // 참고: 케밥의 위치 설정을 위한 relative 설정
+  position: relative;
+  width: 388px;
+  padding: 16px 20px 20px;
+  border-radius: 4px;
+  background-color: $white;
+  box-shadow: 0 0 0 1px inset $gray-brt4;
+  cursor: grab;
+
+  &.isDragging,
+  &.isLoading {
+    opacity: 0.5;
+  }
+}
+
+.header {
+  @include flexbox(normal, row, space-between, center);
+  margin-bottom: 24px;
+
+  .info {
+    @include flexbox(8px, row, flex-start, center);
+
+    .customer {
+      @include glyph16Bold;
+      color: $black;
+    }
+
+    .model {
+      @include glyph14Regular;
+      color: $gray-brt3;
+    }
+  }
+}
+
+.body {
+  @include flexbox(8px, column, flex-start, stretch);
+  margin-bottom: 16px;
+
+  .field {
+    @include flexbox(8px, row, flex-start, center);
+
+    .text {
+      @include glyph14Medium;
+      @include ellipsis;
+      color: $gray-brt1;
+    }
+  }
+}
+
+.date {
+  @include glyph14Regular;
+  color: $gray-brt1;
+}

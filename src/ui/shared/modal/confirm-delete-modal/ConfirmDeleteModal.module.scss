@@ -1,0 +1,23 @@
+.container {
+  .title {
+    @include glyph22Bold;
+    margin-bottom: 58px;
+    text-align: center;
+  }
+
+  .text {
+    @include glyph16Regular;
+    margin-bottom: 50px;
+    text-align: center;
+
+    .item {
+      @include glyph16Bold;
+    }
+  }
+
+  .buttonContainer {
+    @include flexbox(12px, row);
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

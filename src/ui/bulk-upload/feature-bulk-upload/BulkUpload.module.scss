@@ -1,0 +1,67 @@
+.container {
+  .tabContainer {
+    @include flexbox(normal, row, flex-start, stretch);
+    position: relative;
+    width: 216px;
+    height: 42px;
+
+    .tab {
+      @include glyph14Regular;
+      z-index: 1;
+      flex-grow: 1;
+      color: $gray-brt1;
+
+      &.active {
+        @include glyph14Medium;
+        color: $black;
+      }
+    }
+
+    .box {
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      transition: left 0.3s ease;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      background-color: $gray-brt5;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 18px;
+        height: 2px;
+        transform: translateX(-50%);
+        background-color: $red;
+      }
+    }
+  }
+
+  .body {
+    width: 600px;
+    height: 274px;
+    padding: 24px;
+    border-radius: 4px;
+    background-color: $gray-brt5;
+
+    .input {
+      @include flexbox(normal, row, center, center);
+      height: 100%;
+      border-radius: 4px;
+      background-color: $gray-brt6;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%23b5b5b5' stroke-width='3' stroke-dasharray='3%2c 7' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+      cursor: pointer;
+
+      .content {
+        @include flexbox(8px, column, flex-start, center);
+
+        .text {
+          @include glyph14Regular;
+          color: $gray-brt2;
+        }
+      }
+    }
+  }
+}

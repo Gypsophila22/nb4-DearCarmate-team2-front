@@ -1,0 +1,36 @@
+.container {
+  width: 388px;
+
+  .title {
+    @include glyph16Bold(19px);
+    margin-bottom: 20px;
+
+    .totalItemCount {
+      @include glyph16Regular(19px);
+      margin-left: 4px;
+      color: $red;
+    }
+  }
+
+  .body {
+    height: calc(100vh - 400px);
+    overflow-y: scroll;
+
+    .cardsContainer {
+      @include flexbox(16px, column);
+    }
+
+    .dropIndicator {
+      height: 8px;
+      margin-top: 4px;
+      transition: opacity 0.2s;
+      border-radius: 4px;
+      opacity: 0;
+      background-color: rgb(0 0 0 / 10%);
+
+      &.isOver {
+        opacity: 1;
+      }
+    }
+  }
+}

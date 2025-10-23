@@ -1,0 +1,30 @@
+.dialog {
+  top: 50%;
+  width: fit-content;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease normal;
+  border-radius: 4px;
+  background-color: $white;
+
+  &::backdrop {
+    animation: fadeI 0.2s;
+    background-color: rgb(0 0 0 / 70%);
+  }
+
+  .contentWrapper {
+    width: 510px;
+    padding: 40px 24px;
+  }
+}
+
+.formContainer {
+  .password {
+    margin-bottom: 40px;
+  }
+
+  .buttonContainer {
+    @include flexbox(12px, row);
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,70 @@
+.container {
+  @include flexbox(normal, row);
+  width: fit-content;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: $white;
+
+  .item {
+    @include flexbox(normal, column, space-between, stretch);
+    position: relative;
+    width: 270px;
+    height: 158px;
+    padding: 30px 32px;
+
+    .header {
+      @include flexbox(8px, row, flex-start, center);
+
+      .title {
+        @include glyph14Medium;
+        color: $gray-brt1;
+      }
+    }
+
+    .body {
+      @include flexbox(normal, row, space-between, center);
+
+      .compared {
+        @include flexbox(2px, column, flex-end);
+        height: 32px;
+
+        .growthRate {
+          @include flexbox(4px, row, flex-start, center);
+
+          .value {
+            @include glyph10Regular;
+            color: $blue;
+
+            &.isIncreased {
+              color: $red;
+            }
+          }
+        }
+
+        .lastMonthSales {
+          @include glyph10Regular;
+          color: $gray-brt2;
+        }
+      }
+
+      .present {
+        @include glyph26Bold;
+        color: $black;
+      }
+    }
+
+    &:not(.last) {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 1px;
+        height: 77px;
+        transform: translateY(-50%);
+        background-color: $gray-brt4;
+      }
+    }
+  }
+}

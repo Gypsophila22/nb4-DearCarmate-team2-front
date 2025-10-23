@@ -1,0 +1,11 @@
+.button {
+  @include glyph14Regular;
+  position: absolute;
+  bottom: 80px;
+  left: 24px;
+  color: $gray-brt2;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

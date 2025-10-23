@@ -1,0 +1,10 @@
+.container {
+  .dateField {
+    @include flexbox(12px, row, space-between);
+    margin-bottom: 16px;
+  }
+
+  .alarms {
+    @include flexbox(12px, column, flex-start, stretch);
+  }
+}
