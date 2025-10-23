@@ -1,101 +1,126 @@
-import axios, { AxiosError, AxiosInstance } from 'axios'
-import { deleteCookie, getCookie } from 'cookies-next'
-import { AxiosErrorData } from './types'
-import { getAccessToken, setTokenCookies } from './auth'
+/* eslint-disable comma-dangle */
+/* eslint-disable @typescript-eslint/semi */
+import axios, { AxiosError, AxiosInstance } from 'axios';
+import { deleteCookie, getCookie } from 'cookies-next';
+import { AxiosErrorData } from './types';
+import { getAccessToken, setTokenCookies } from './auth';
 
 declare module 'axios' {
   export interface InternalAxiosRequestConfig {
-    _retry?: boolean
+    _retry?: boolean;
   }
 }
 
 export const instance: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   timeout: 1000 * 60 * 5, // 5 minutes
-})
+});
 
 export const setAuthorization = (accessToken: string) => {
-  instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+  if (!accessToken) {
+    delete instance.defaults.headers.common['Authorization'];
+    return;
+  }
+  instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+};
+
+let isLoggedOut = false;
+
+/** 탈퇴/로그아웃 직후에는 자동 리프레시 시도를 막기 위해 호출하세요. */
+export function markLoggedOut() {
+  isLoggedOut = true;
 }
 
 instance.interceptors.request.use(
   (config) => {
-    const { method, url } = config
-    console.log(`🚀 [API] ${method?.toUpperCase()} ${url} | Request`)
+    const { method, url } = config;
+    console.log(`🚀 [API] ${method?.toUpperCase()} ${url} | Request`);
 
-    const accessToken = getAccessToken()
+    const accessToken = getAccessToken();
     if (accessToken) {
-      config.headers.set('Authorization', `Bearer ${accessToken}`)
+      // axios v1: headers is a plain object (string indexable)
+      (config.headers as any)['Authorization'] = `Bearer ${accessToken}`;
     }
 
-    return config
+    return config;
   },
-
-  /**
-   * request 에러 시 작업
-   */
   (error: AxiosError | Error): Promise<AxiosError> => {
-    return Promise.reject(error)
-  },
-)
+    return Promise.reject(error);
+  }
+);
 
 instance.interceptors.response.use(
   (response) => {
-    /**
-     * http status가 20X이고, http response가 then으로 넘어가기 직전 호출
-     */
-    const { method, url } = response.config
-    const { status } = response
-    console.log(`🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`)
-
-    return response
+    const { method, url } = response.config;
+    const { status } = response;
+    console.log(
+      `🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`
+    );
+    return response;
   },
   async (error: AxiosError<AxiosErrorData> | Error): Promise<AxiosError> => {
-    /**
-     * AxiosError가 아닌 Error는 그대로 reject
-     */
     if (!axios.isAxiosError(error) || !error.config || !error.response) {
-      console.log(`🚨 [API] | Error ${error.message}`)
-      return Promise.reject(error)
+      console.log(`🚨 [API] | Error ${error.message}`);
+      return Promise.reject(error);
     }
 
-    /**
-     * http status가 20X가 아닌 경우 로그 출력
-     */
-    const { method, url } = error.config
-    const { status, statusText, data } = error.response
-    const message = data?.message || error.message
+    const originalRequest = error.config;
+    const { method, url } = originalRequest;
+    const { status, statusText, data } = error.response;
+    const message = (data as any)?.message || error.message;
 
     console.log(
-      `🚨 [API] ${method?.toUpperCase()} ${url} | Error ${status} ${statusText} | ${message}`,
-    )
+      `🚨 [API] ${method?.toUpperCase()} ${url} | Error ${status} ${statusText} | ${message}`
+    );
 
-    /**
-     * 401 에러 발생 시 토큰 재발급 후 한 번만 재시도하고
-     * 실패하면 로그인 페이지로 이동
-     */
-    const originalRequest = error.config
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true
+    // 401 처리: 로그아웃 상태거나 refresh 토큰이 없으면 리프레시 시도하지 않음
+    if (status === 401 && !originalRequest._retry) {
+      if (isLoggedOut) {
+        // 이미 로그아웃/탈퇴 플로우임 → 재발급 금지
+        return Promise.reject(error);
+      }
+
+      // cookies-next: string | undefined
+      const refreshToken = getCookie('refreshToken') as string | undefined;
+      if (!refreshToken) {
+        // 리프레시 토큰 없으면 로그인 화면으로
+        try {
+          deleteCookie('refreshToken');
+        } catch {}
+        setAuthorization('');
+        if (typeof window !== 'undefined') window.location.href = '/signin';
+        return Promise.reject(error);
+      }
+
+      // 한 번만 재시도
+      originalRequest._retry = true;
 
       try {
-        const refreshToken = getCookie('refreshToken')
-        const { data } = await instance.post<{
-          accessToken: string
-          refreshToken: string
-        }>('/auth/refresh', { refreshToken })
+        const { data: tokens } = await instance.post<{
+          accessToken: string;
+          refreshToken: string;
+        }>('/auth/refresh', { refreshToken });
+
         const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
-          data
-        setTokenCookies(newAccessToken, newRefreshToken)
-        return instance(originalRequest)
+          tokens;
+
+        // 쿠키/헤더 갱신
+        setTokenCookies(newAccessToken, newRefreshToken);
+        setAuthorization(newAccessToken);
+
+        // 원 요청 재전송
+        return instance(originalRequest);
       } catch (refreshError) {
-        deleteCookie('refreshToken')
-        setAuthorization('')
-        location.href = '/signin'
-        return Promise.reject(refreshError)
+        // 리프레시 실패 → 세션 정리 후 로그인 화면
+        try {
+          deleteCookie('refreshToken');
+        } catch {}
+        setAuthorization('');
+        if (typeof window !== 'undefined') window.location.href = '/signin';
+        return Promise.reject(refreshError as AxiosError);
       }
     }
 
-    return Promise.reject(error)
-  },
-)
+    return Promise.reject(error);
+  }
+);

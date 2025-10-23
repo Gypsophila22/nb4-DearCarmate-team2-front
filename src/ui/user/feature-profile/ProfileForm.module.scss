@@ -36,15 +36,6 @@
   width: max-content; // 100%로 늘어나는 것 방지
 }
 
-.deletePwdInput {
-  margin-bottom: 8px;
-  padding: 8px 10px;
-  border: 1px solid var(--border, #eee);
-  border-radius: 6px;
-  font-size: 13px;
-  width: 240px; /* 필요 시 조정 */
-}
-
 @media (max-width: 768px) {
   .deleteSection {
     row-gap: 8px;

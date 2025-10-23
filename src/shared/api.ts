@@ -1,3 +1,5 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable @typescript-eslint/semi */
 import { instance as axios } from './axios';
 import {
   CarFormInput,
@@ -19,7 +21,6 @@ import {
   ItemForDropdown,
   Meeting,
   OffsetPagination,
-  PasswordCheckFormInput,
   ProfileFormInput,
   SearchByCar,
   SearchByCompany,
@@ -58,16 +59,6 @@ export const getUserInfo = async () => {
 export interface CheckPasswordResponse {
   encryptedCurrentPassword: string;
 }
-
-export const checkPassword = async (
-  data: PasswordCheckFormInput
-): Promise<CheckPasswordResponse> => {
-  const response = await axios.post<CheckPasswordResponse>(
-    '/users/check',
-    data
-  );
-  return response.data;
-};
 
 export const editUser = async (data: ProfileFormInput) => {
   const response = await axios.patch<UserInfo>('/users/me', data);
