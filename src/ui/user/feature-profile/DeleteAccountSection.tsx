@@ -8,6 +8,7 @@ import useConfirmDeleteModal from '@ui/shared/modal/confirm-delete-modal/useConf
 import useConfirmModal from '@ui/shared/modal/confirm-modal/useConfirmModal';
 import { useDeleteMe } from '@ui/user/data-access-profile/useDeleteMe';
 import useUserStore from '@zustand/useUserStore';
+import { clearAuth } from '@shared/auth';
 
 export default function DeleteAccountSection() {
   const router = useRouter();
@@ -22,9 +23,17 @@ export default function DeleteAccountSection() {
   const handlePasswordConfirm = async (password: string) => {
     try {
       await mutate({ password });
-      const resetUser = useUserStore.getState().resetUser;
-      resetUser?.();
-      router.replace('/signin');
+      setTimeout(() => {
+        openConfirmModal({
+          text: '탈퇴가 완료되었습니다.',
+          onCloseSuccess: () => {
+            const resetUser = useUserStore.getState().resetUser;
+            clearAuth?.(); // 쿠키/헤더/리프레시 차단 정리
+            resetUser?.(); // zustand 유저 상태 초기화
+            router.replace('/signin');
+          },
+        });
+      }, 0);
       return true; // 성공 → AuthCheckModal 닫힘
     } catch (err: any) {
       const msg =

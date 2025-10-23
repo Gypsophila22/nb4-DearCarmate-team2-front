@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/semi */
 import classNames from 'classnames/bind';
 import styles from './ProfileForm.module.scss';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
