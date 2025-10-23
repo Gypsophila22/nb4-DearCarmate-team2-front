@@ -1,38 +1,41 @@
-import classNames from 'classnames/bind'
-import styles from './ImageUploadConnect.module.scss'
-import { Controller, useFormContext } from 'react-hook-form'
-import uploadImage from './uploadImage'
-import Icon from '@ui/shared/icon/Icon'
-import Image from 'next/image'
-import { useState } from 'react'
-import GlobalLoading from '@ui/shared/global-loading/GlobalLoading'
-import { AxiosError } from 'axios'
-import { AxiosErrorData } from '@shared/types'
+import classNames from 'classnames/bind';
+import styles from './ImageUploadConnect.module.scss';
+import { Controller, useFormContext } from 'react-hook-form';
+import uploadImage from './uploadImage';
+import Icon from '@ui/shared/icon/Icon';
+import Image from 'next/image';
+import { useState } from 'react';
+import GlobalLoading from '@ui/shared/global-loading/GlobalLoading';
+import { AxiosError } from 'axios';
+import { AxiosErrorData } from '@shared/types';
+import notify from '@ui/shared/notify';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 type ImageUploadConnectProps = {
-  name: string
-}
+  name: string;
+};
 
 const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
-  const { setValue } = useFormContext()
-  const [isLoading, setIsLoading] = useState(false)
+  const { setValue } = useFormContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
+    const file = e.target.files?.[0];
+    if (!file) return;
     try {
-      setIsLoading(true)
-      const imageUrl = await uploadImage(file)
-      if (imageUrl) setValue(name, imageUrl)
+      setIsLoading(true);
+      const imageUrl = await uploadImage(file);
+      if (imageUrl) setValue(name, imageUrl);
     } catch (error) {
-      const text = (error as AxiosError<AxiosErrorData>)?.response?.data?.message || '파일 업로드에 실패했습니다. 다시 시도해주세요.'
-      alert(text)
+      const text =
+        (error as AxiosError<AxiosErrorData>)?.response?.data?.message ||
+        '파일 업로드에 실패했습니다. 다시 시도해주세요.';
+      notify.error(text);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -45,7 +48,7 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
                 src={value || '/images/default-profile.svg'}
                 width={140}
                 height={140}
-                alt='프로필 이미지'
+                alt="프로필 이미지"
                 className={cx('image')}
               />
             </div>
@@ -53,27 +56,21 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>
               <input
-                type='file'
+                type="file"
                 accept="image/*"
                 hidden
                 onChange={handleUploadImage}
               />
               <div className={cx('editButton')}>
-                <Icon
-                  name='edit-button'
-                  width={48}
-                  height={48}
-                />
+                <Icon name="edit-button" width={48} height={48} />
               </div>
             </label>
           </div>
         )}
       />
-      {isLoading && (
-        <GlobalLoading hasBackDrop />
-      )}
+      {isLoading && <GlobalLoading hasBackDrop />}
     </div>
-  )
-}
+  );
+};
 
-export default ImageUploadConnect
+export default ImageUploadConnect;
