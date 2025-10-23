@@ -6,3 +6,54 @@
     margin-bottom: 40px;
   }
 }
+
+.deleteSection {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border, #eee);
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 10px; // 제목-설명-버튼 간격
+}
+
+.deleteDesc {
+  font-size: 13px;
+  color: var(--gray-600, #6b7280);
+  line-height: 1.5;
+  margin: 0; // 아래로 밀리는 여백 제거
+}
+
+.deleteBtn {
+  display: inline-flex; // 텍스트 중앙정렬 보장
+  align-items: center; // 세로축 중앙
+  justify-content: center;
+  height: 34px; // 프로젝트 버튼 기준에 맞춰 필요 시 조정
+  padding: 0 14px;
+  font-size: 13px;
+  line-height: 1; // baseline 흔들림 방지
+  border-radius: 6px;
+  vertical-align: middle; // 주변 텍스트와 정렬 안정화
+  width: max-content; // 100%로 늘어나는 것 방지
+}
+
+.deletePwdInput {
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border, #eee);
+  border-radius: 6px;
+  font-size: 13px;
+  width: 240px; /* 필요 시 조정 */
+}
+
+@media (max-width: 768px) {
+  .deleteSection {
+    row-gap: 8px;
+  }
+  .deleteDesc {
+    font-size: 12.5px;
+  }
+  .deleteBtn {
+    height: 32px;
+    font-size: 12.5px;
+  }
+}

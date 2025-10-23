@@ -27,4 +27,8 @@
     width: fit-content;
     margin: 0 auto;
   }
+
+  .dialog {
+    z-index: 1000; // 앱 내 최상위 모달보다 높게
+  }
 }
