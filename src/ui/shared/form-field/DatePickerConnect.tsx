@@ -1,21 +1,25 @@
-import { Control, Controller, ControllerProps, FieldPath, FieldPathValue, FieldValues } from 'react-hook-form'
-import DatePicker, { DatePickerProps } from '../input/DatePicker/DatePicker'
+import {
+  Control,
+  Controller,
+  ControllerProps,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+} from "react-hook-form";
+import DatePicker, { DatePickerProps } from "../input/DatePicker/DatePicker";
 
 type DatePickerConnectProps<
   F extends FieldValues,
-  N extends FieldPath<F>
-> = Omit<DatePickerProps, 'value' | 'error' | 'onChange' | 'helperText'> & {
-  name: N
-  control?: Control<F>
-  defaultValue?: FieldPathValue<F, N>
-  rules?: ControllerProps<F, N>['rules']
-  restrictToFuture?: boolean
-}
+  N extends FieldPath<F>,
+> = Omit<DatePickerProps, "value" | "error" | "onChange" | "helperText"> & {
+  name: N;
+  control?: Control<F>;
+  defaultValue?: FieldPathValue<F, N>;
+  rules?: ControllerProps<F, N>["rules"];
+  restrictToFuture?: boolean;
+};
 
-const DatePickerConnect = <
-  F extends FieldValues,
-  N extends FieldPath<F>
->({
+const DatePickerConnect = <F extends FieldValues, N extends FieldPath<F>>({
   name,
   control,
   defaultValue,
@@ -40,7 +44,7 @@ const DatePickerConnect = <
         />
       )}
     />
-  )
-}
+  );
+};
 
-export default DatePickerConnect
+export default DatePickerConnect;

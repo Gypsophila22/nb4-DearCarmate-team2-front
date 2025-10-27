@@ -1,33 +1,31 @@
-import { SearchByUser } from '@shared/types'
-import { PropsWithChildren, createContext, useContext } from 'react'
+import { SearchByUser } from "@shared/types";
+import { PropsWithChildren, createContext, useContext } from "react";
 
 interface UserContextType {
   page: number;
-  searchBy: SearchByUser
+  searchBy: SearchByUser;
   keyword: string;
 }
 
 const UserContext = createContext<UserContextType>({
   page: 1,
   searchBy: SearchByUser.companyName,
-  keyword: '',
-})
+  keyword: "",
+});
 
 type ProviderProps = {
   page: number;
-  searchBy: SearchByUser
+  searchBy: SearchByUser;
   keyword: string;
-}
+};
 
-const UserContextProvider = ({ children, ...value }: PropsWithChildren<ProviderProps>) => {
+const UserContextProvider = ({
+  children,
+  ...value
+}: PropsWithChildren<ProviderProps>) => {
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};
 
-  return (
-    <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
-  )
-}
+const useUserContext = () => useContext(UserContext);
 
-const useUserContext = () => useContext(UserContext)
-
-export { UserContextProvider, useUserContext }
+export { UserContextProvider, useUserContext };

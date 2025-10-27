@@ -1,35 +1,35 @@
-import { createContext, FC, ReactElement, useCallback, useState } from 'react'
+import { createContext, FC, ReactElement, useCallback, useState } from "react";
 
 type ModalContextType = {
-  isOpened: boolean
-  openModal: (content: ReactElement) => void
-  closeModal: () => void
-  modalContent: null | ReactElement
-}
+  isOpened: boolean;
+  openModal: (content: ReactElement) => void;
+  closeModal: () => void;
+  modalContent: null | ReactElement;
+};
 
 const FormModalContext = createContext<ModalContextType>({
   isOpened: false,
   openModal: () => undefined,
   closeModal: () => undefined,
   modalContent: null,
-})
-const { Provider } = FormModalContext
+});
+const { Provider } = FormModalContext;
 
 const FormModalProvider: FC<{ children: ReactElement }> = ({ children }) => {
-  const [isOpened, setIsOpened] = useState<boolean>(false)
-  const [modalContent, setModalContent] = useState<null | ReactElement>(null)
+  const [isOpened, setIsOpened] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<null | ReactElement>(null);
 
   const openModal = useCallback((content: ReactElement) => {
-    setIsOpened(true)
+    setIsOpened(true);
     if (content) {
-      setModalContent(content)
+      setModalContent(content);
     }
-  }, [])
+  }, []);
 
   const closeModal = useCallback(() => {
-    setIsOpened(false)
-    setModalContent(null)
-  }, [])
+    setIsOpened(false);
+    setModalContent(null);
+  }, []);
 
   return (
     <Provider
@@ -43,7 +43,7 @@ const FormModalProvider: FC<{ children: ReactElement }> = ({ children }) => {
       {modalContent}
       {children}
     </Provider>
-  )
-}
+  );
+};
 
-export { FormModalContext, FormModalProvider }
+export { FormModalContext, FormModalProvider };

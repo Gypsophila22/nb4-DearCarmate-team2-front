@@ -1,14 +1,14 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable comma-dangle */
 /* eslint-disable @typescript-eslint/semi */
-import { useRef } from 'react';
-import { useRouter } from 'next/router';
-import AuthCheckModal from './AuthCheckModal';
-import useConfirmDeleteModal from '@ui/shared/modal/confirm-delete-modal/useConfirmDeleteModal';
-import useConfirmModal from '@ui/shared/modal/confirm-modal/useConfirmModal';
-import { useDeleteMe } from '@ui/user/data-access-profile/useDeleteMe';
-import useUserStore from '@zustand/useUserStore';
-import { clearAuth } from '@shared/auth';
+import { useRef } from "react";
+import { useRouter } from "next/router";
+import AuthCheckModal from "./AuthCheckModal";
+import useConfirmDeleteModal from "@ui/shared/modal/confirm-delete-modal/useConfirmDeleteModal";
+import useConfirmModal from "@ui/shared/modal/confirm-modal/useConfirmModal";
+import { useDeleteMe } from "@ui/user/data-access-profile/useDeleteMe";
+import useUserStore from "@zustand/useUserStore";
+import { clearAuth } from "@shared/auth";
 
 export default function DeleteAccountSection() {
   const router = useRouter();
@@ -25,12 +25,12 @@ export default function DeleteAccountSection() {
       await mutate({ password });
       setTimeout(() => {
         openConfirmModal({
-          text: '탈퇴가 완료되었습니다.',
+          text: "탈퇴가 완료되었습니다.",
           onCloseSuccess: () => {
             const resetUser = useUserStore.getState().resetUser;
             clearAuth?.(); // 쿠키/헤더/리프레시 차단 정리
             resetUser?.(); // zustand 유저 상태 초기화
-            router.replace('/signin');
+            router.replace("/signin");
           },
         });
       }, 0);
@@ -39,7 +39,7 @@ export default function DeleteAccountSection() {
       const msg =
         err?.response?.data?.message ??
         err?.message ??
-        '비밀번호가 올바르지 않습니다.';
+        "비밀번호가 올바르지 않습니다.";
       // 실패 → 문자열 반환해서 AuthCheckModal에서 onErrorMessage로 전달
       return msg;
     }
@@ -51,8 +51,8 @@ export default function DeleteAccountSection() {
         closeConfirmDeleteModal();
         authCheckDialogRef.current?.showModal();
       },
-      deleteType: '계정',
-      itemName: user?.name || user?.email || '내 계정',
+      deleteType: "계정",
+      itemName: user?.name || user?.email || "내 계정",
     });
   };
 
@@ -79,9 +79,9 @@ export default function DeleteAccountSection() {
           setTimeout(() => {
             openConfirmModal({
               text:
-                typeof msg === 'string'
+                typeof msg === "string"
                   ? msg
-                  : '현재 비밀번호가 맞지 않습니다.',
+                  : "현재 비밀번호가 맞지 않습니다.",
               // onCloseSuccess?: 필요하면 여기서 추가
             });
           }, 0);

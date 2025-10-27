@@ -1,5 +1,5 @@
 const getPageTitle = (text: string) => {
-  return `${text} : Dear Carmate`
-}
+  return `${text} : Dear Carmate`;
+};
 
-export default getPageTitle
+export default getPageTitle;

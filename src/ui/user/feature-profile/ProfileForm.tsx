@@ -1,23 +1,23 @@
 /* eslint-disable @typescript-eslint/semi */
-import classNames from 'classnames/bind';
-import styles from './ProfileForm.module.scss';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { ProfileFormInput } from '@shared/types';
-import FieldLabel from '@ui/shared/input/FieldLabel/FieldLabel';
-import Button from '@ui/shared/button/Button';
-import PasswordFieldConnect from '@ui/shared/form-field/PasswordFieldConnect';
+import classNames from "classnames/bind";
+import styles from "./ProfileForm.module.scss";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { ProfileFormInput } from "@shared/types";
+import FieldLabel from "@ui/shared/input/FieldLabel/FieldLabel";
+import Button from "@ui/shared/button/Button";
+import PasswordFieldConnect from "@ui/shared/form-field/PasswordFieldConnect";
 import {
   PASSWORD_VALIDATION_REGEXP,
   PHONE_NUMBER_VALIDATION_REGEXP,
-} from '@ui/shared/util-constants/constants';
-import useUserStore from '@zustand/useUserStore';
-import { useEffect, useRef } from 'react';
-import TextField from '@ui/shared/input/TextField/TextField';
-import TextFieldConnect from '@ui/shared/form-field/TextFieldConnect';
-import ImageUploadConnect from '@ui/shared/form-field/ImageUploadConnect/ImageUploadConnect';
-import useEditUser from '../data-access-profile/useEditUser';
-import AuthCheckModal from './AuthCheckModal';
-import DeleteAccountSection from './DeleteAccountSection';
+} from "@ui/shared/util-constants/constants";
+import useUserStore from "@zustand/useUserStore";
+import { useEffect, useRef } from "react";
+import TextField from "@ui/shared/input/TextField/TextField";
+import TextFieldConnect from "@ui/shared/form-field/TextFieldConnect";
+import ImageUploadConnect from "@ui/shared/form-field/ImageUploadConnect/ImageUploadConnect";
+import useEditUser from "../data-access-profile/useEditUser";
+import AuthCheckModal from "./AuthCheckModal";
+import DeleteAccountSection from "./DeleteAccountSection";
 
 const cx = classNames.bind(styles);
 
@@ -42,9 +42,9 @@ const ProfileForm = ({}: ProfileFormProps) => {
         : undefined,
     };
     editUser(editedUserData);
-    setValue('currentPassword', '');
-    setValue('password', '');
-    setValue('passwordConfirmation', '');
+    setValue("currentPassword", "");
+    setValue("password", "");
+    setValue("passwordConfirmation", "");
   };
 
   const handleClickCompletedButton = async () => {
@@ -54,15 +54,15 @@ const ProfileForm = ({}: ProfileFormProps) => {
   };
 
   useEffect(() => {
-    setValue('imageUrl', user.imageUrl);
-    setValue('employeeNumber', user.employeeNumber);
-    setValue('phoneNumber', user.phoneNumber);
+    setValue("imageUrl", user.imageUrl);
+    setValue("employeeNumber", user.employeeNumber);
+    setValue("phoneNumber", user.phoneNumber);
   }, [setValue, user.imageUrl, user.employeeNumber, user.phoneNumber]);
 
   return (
     <FormProvider {...methods}>
-      <form className={cx('container')} onSubmit={handleSubmit(handleEditUser)}>
-        <div className={cx('inputs')}>
+      <form className={cx("container")} onSubmit={handleSubmit(handleEditUser)}>
+        <div className={cx("inputs")}>
           <div>
             <FieldLabel label="프로필 이미지" />
             <ImageUploadConnect name="imageUrl" />
@@ -83,7 +83,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
               placeholder="사원번호를 입력해 주세요"
               rules={{
                 validate: (value) =>
-                  value.trim() !== '' || '필수 입력사항입니다.',
+                  value.trim() !== "" || "필수 입력사항입니다.",
               }}
             />
           </div>
@@ -95,10 +95,10 @@ const ProfileForm = ({}: ProfileFormProps) => {
               placeholder="연락처를 입력해 주세요"
               rules={{
                 validate: (value) =>
-                  value.trim() !== '' || '필수 입력사항입니다.',
+                  value.trim() !== "" || "필수 입력사항입니다.",
                 pattern: {
                   value: PHONE_NUMBER_VALIDATION_REGEXP,
-                  message: '전화번호 형식에 맞지 않습니다(하이픈 포함 필요)',
+                  message: "전화번호 형식에 맞지 않습니다(하이픈 포함 필요)",
                 },
               }}
             />
@@ -111,7 +111,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
               rules={{
                 pattern: {
                   value: PASSWORD_VALIDATION_REGEXP,
-                  message: '영문, 숫자 조합 8~16자리로 입력해주세요',
+                  message: "영문, 숫자 조합 8~16자리로 입력해주세요",
                 },
               }}
             />
@@ -124,8 +124,8 @@ const ProfileForm = ({}: ProfileFormProps) => {
               placeholder="새 비밀번호를 한번 더 입력해 주세요"
               rules={{
                 validate: (value) =>
-                  value === methods.getValues('password') ||
-                  '비밀번호가 일치하지 않습니다',
+                  value === methods.getValues("password") ||
+                  "비밀번호가 일치하지 않습니다",
               }}
             />
           </div>

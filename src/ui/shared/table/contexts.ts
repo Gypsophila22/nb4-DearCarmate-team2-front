@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext } from "react";
 
-export const TableHeadContext = createContext(false)
-export const TableBodyContext = createContext(false)
+export const TableHeadContext = createContext(false);
+export const TableBodyContext = createContext(false);

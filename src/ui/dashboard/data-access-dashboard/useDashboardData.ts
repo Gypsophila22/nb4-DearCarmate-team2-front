@@ -1,14 +1,14 @@
-import { getDashboardData } from '@shared/api'
-import { useQuery } from '@tanstack/react-query'
+import { getDashboardData } from "@shared/api";
+import { useQuery } from "@tanstack/react-query";
 
 const useDashboardData = () => {
   const query = useQuery({
-    queryKey: ['dashboard'],
+    queryKey: ["dashboard"],
     queryFn: async () => await getDashboardData(),
     throwOnError: true,
-  })
+  });
 
-  return query
-}
+  return query;
+};
 
-export default useDashboardData
+export default useDashboardData;

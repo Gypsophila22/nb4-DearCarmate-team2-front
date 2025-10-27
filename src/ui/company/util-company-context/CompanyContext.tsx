@@ -1,33 +1,33 @@
-import { SearchByCompany } from '@shared/types'
-import { PropsWithChildren, createContext, useContext } from 'react'
+import { SearchByCompany } from "@shared/types";
+import { PropsWithChildren, createContext, useContext } from "react";
 
 interface CompanyContextType {
   page: number;
-  searchBy: SearchByCompany
+  searchBy: SearchByCompany;
   keyword: string;
 }
 
 const CompanyContext = createContext<CompanyContextType>({
   page: 1,
   searchBy: SearchByCompany.companyName,
-  keyword: '',
-})
+  keyword: "",
+});
 
 type ProviderProps = {
   page: number;
-  searchBy: SearchByCompany
+  searchBy: SearchByCompany;
   keyword: string;
-}
+};
 
-const CompanyContextProvider = ({ children, ...value }: PropsWithChildren<ProviderProps>) => {
-
+const CompanyContextProvider = ({
+  children,
+  ...value
+}: PropsWithChildren<ProviderProps>) => {
   return (
-    <CompanyContext.Provider value={value}>
-      {children}
-    </CompanyContext.Provider>
-  )
-}
+    <CompanyContext.Provider value={value}>{children}</CompanyContext.Provider>
+  );
+};
 
-const useCompanyContext = () => useContext(CompanyContext)
+const useCompanyContext = () => useContext(CompanyContext);
 
-export { CompanyContextProvider, useCompanyContext }
+export { CompanyContextProvider, useCompanyContext };

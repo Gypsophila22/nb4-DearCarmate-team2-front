@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable @typescript-eslint/semi */
-import { instance as axios } from './axios';
+import { instance as axios } from "./axios";
 import {
   CarFormInput,
   CarModel,
@@ -31,7 +31,7 @@ import {
   SignInFormInput,
   SignUpFormInput,
   UserInfo,
-} from './types';
+} from "./types";
 
 // Auth related APIs
 export interface SignInResponse {
@@ -41,18 +41,18 @@ export interface SignInResponse {
 }
 
 export const signIn = async (data: SignInFormInput) => {
-  const response = await axios.post<SignInResponse>('/auth/login', data);
+  const response = await axios.post<SignInResponse>("/auth/login", data);
   return response.data;
 };
 
 export const signUp = async (data: SignUpFormInput) => {
-  const response = await axios.post<UserInfo>('/users', data);
+  const response = await axios.post<UserInfo>("/users", data);
   return response.data;
 };
 
 // User related APIs
 export const getUserInfo = async () => {
-  const response = await axios.get<UserInfo>('/users/me');
+  const response = await axios.get<UserInfo>("/users/me");
   return response.data;
 };
 
@@ -61,7 +61,7 @@ export interface CheckPasswordResponse {
 }
 
 export const editUser = async (data: ProfileFormInput) => {
-  const response = await axios.patch<UserInfo>('/users/me', data);
+  const response = await axios.patch<UserInfo>("/users/me", data);
   return response.data;
 };
 
@@ -71,7 +71,7 @@ export const deleteUser = async (id: number) => {
 };
 
 export const deleteMe = async (password: string) => {
-  const res = await axios.delete('/users/me', {
+  const res = await axios.delete("/users/me", {
     data: password ? { password } : undefined,
   });
   return res.data as { message: string };
@@ -94,12 +94,12 @@ export const editCar = async (id: number, data: CarFormInput) => {
 };
 
 export const registerCar = async (data: CarFormInput) => {
-  const response = await axios.post<CarType>('/cars', data);
+  const response = await axios.post<CarType>("/cars", data);
   return response.data;
 };
 
 export const getCarModels = async () => {
-  const response = await axios.get<{ data: CarModel[] }>('/cars/models');
+  const response = await axios.get<{ data: CarModel[] }>("/cars/models");
   return response.data;
 };
 
@@ -116,7 +116,7 @@ export const getCars = async ({
   keyword: string;
   status: CarStatusParam;
 }) => {
-  const response = await axios.get<OffsetPagination<CarType>>('/cars', {
+  const response = await axios.get<OffsetPagination<CarType>>("/cars", {
     params: {
       page,
       pageSize,
@@ -129,9 +129,9 @@ export const getCars = async ({
 };
 
 export const bulkUploadCars = async (data: FormData) => {
-  const response = await axios.post('/cars/upload', data, {
+  const response = await axios.post("/cars/upload", data, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
   return response.data;
@@ -149,7 +149,7 @@ export const editCompany = async (id: number, data: CompanyFormInput) => {
 };
 
 export const registerCompany = async (data: CompanyFormInput) => {
-  const response = await axios.post<CompanyType>('/companies', data);
+  const response = await axios.post<CompanyType>("/companies", data);
   return response.data;
 };
 
@@ -165,7 +165,7 @@ export const getCompanies = async ({
   keyword: string;
 }) => {
   const response = await axios.get<OffsetPagination<CompanyType>>(
-    '/companies',
+    "/companies",
     {
       params: {
         page,
@@ -173,7 +173,7 @@ export const getCompanies = async ({
         searchBy,
         keyword,
       },
-    }
+    },
   );
   return response.data;
 };
@@ -190,7 +190,7 @@ export const getCompanyUsers = async ({
   keyword: string;
 }) => {
   const response = await axios.get<OffsetPagination<CompanyUserType>>(
-    '/companies/users',
+    "/companies/users",
     {
       params: {
         page,
@@ -198,7 +198,7 @@ export const getCompanyUsers = async ({
         searchBy,
         keyword,
       },
-    }
+    },
   );
   return response.data;
 };
@@ -215,7 +215,7 @@ export const editCustomer = async (id: number, data: CustomerFormInput) => {
 };
 
 export const registerCustomer = async (data: CustomerFormInput) => {
-  const response = await axios.post<CustomerType>('/customers', data);
+  const response = await axios.post<CustomerType>("/customers", data);
   return response.data;
 };
 
@@ -231,7 +231,7 @@ export const getCustomers = async ({
   keyword: string;
 }) => {
   const response = await axios.get<OffsetPagination<CustomerType>>(
-    '/customers',
+    "/customers",
     {
       params: {
         page,
@@ -239,15 +239,15 @@ export const getCustomers = async ({
         searchBy,
         keyword,
       },
-    }
+    },
   );
   return response.data;
 };
 
 export const bulkUploadCustomers = async (data: FormData) => {
-  const response = await axios.post('/customers/upload', data, {
+  const response = await axios.post("/customers/upload", data, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      "Content-Type": "multipart/form-data",
     },
   });
   return response.data;
@@ -282,18 +282,18 @@ export type ContractStatusEditFormInput = {
 
 export const editContractStatus = async (
   id: number,
-  data: ContractStatusEditFormInput
+  data: ContractStatusEditFormInput,
 ) => {
   const response = await axios.patch<ContractType>(`/contracts/${id}`, data);
   return response.data;
 };
 
-export type ContractRegisterFormInput = Omit<ContractFormInput, 'meetings'> & {
-  meetings: Omit<ContractFormInput['meetings'][0], 'id'>[];
+export type ContractRegisterFormInput = Omit<ContractFormInput, "meetings"> & {
+  meetings: Omit<ContractFormInput["meetings"][0], "id">[];
 };
 
 export const registerContract = async (data: ContractRegisterFormInput) => {
-  const response = await axios.post<ContractType>('/contracts', data);
+  const response = await axios.post<ContractType>("/contracts", data);
   return response.data;
 };
 
@@ -304,7 +304,7 @@ export const getContracts = async ({
   searchBy: SearchByContract;
   keyword: string;
 }) => {
-  const response = await axios.get<ContractsListType>('/contracts', {
+  const response = await axios.get<ContractsListType>("/contracts", {
     params: {
       searchBy,
       keyword,
@@ -314,17 +314,17 @@ export const getContracts = async ({
 };
 
 export const getCarsForContract = async () => {
-  const response = await axios.get<ItemForDropdown[]>('/contracts/cars');
+  const response = await axios.get<ItemForDropdown[]>("/contracts/cars");
   return response.data;
 };
 
 export const getCustomersForContract = async () => {
-  const response = await axios.get<ItemForDropdown[]>('/contracts/customers');
+  const response = await axios.get<ItemForDropdown[]>("/contracts/customers");
   return response.data;
 };
 
 export const getUsersForContract = async () => {
-  const response = await axios.get<ItemForDropdown[]>('/contracts/users');
+  const response = await axios.get<ItemForDropdown[]>("/contracts/users");
   return response.data;
 };
 
@@ -341,7 +341,7 @@ export const getContractDocuments = async ({
   keyword: string;
 }) => {
   const response = await axios.get<OffsetPagination<ContractDocumentType>>(
-    '/contractDocuments',
+    "/contractDocuments",
     {
       params: {
         page,
@@ -349,52 +349,52 @@ export const getContractDocuments = async ({
         searchBy,
         keyword,
       },
-    }
+    },
   );
   return response.data;
 };
 
 export const getDraftsForContractDocument = async () => {
   const response = await axios.get<ItemForDropdown[]>(
-    '/contractDocuments/draft'
+    "/contractDocuments/draft",
   );
   return response.data;
 };
 
 export const downloadContractDocument = async (id: number) => {
   const response = await axios.get(`contractDocuments/${id}/download`, {
-    responseType: 'blob',
+    responseType: "blob",
   });
   return response.data;
 };
 
 // Dashboard related APIs
 export const getDashboardData = async () => {
-  const response = await axios.get<DashboardData>('/dashboard');
+  const response = await axios.get<DashboardData>("/dashboard");
   return response.data;
 };
 
 // File upload related APIs
 export const uploadFile = async (
-  file: File
+  file: File,
 ): Promise<{ contractDocumentId: number }> => {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append("file", file);
   const response = await axios.postForm<{ contractDocumentId: number }>(
-    '/contractDocuments/upload',
-    formData
+    "/contractDocuments/upload",
+    formData,
   );
   return response.data;
 };
 
 export const uploadImage = async (
-  file: File
+  file: File,
 ): Promise<{ imageUrl: string }> => {
   const formData = new FormData();
-  formData.append('file', file);
+  formData.append("file", file);
   const response = await axios.postForm<{ imageUrl: string }>(
-    '/images/upload',
-    formData
+    "/images/upload",
+    formData,
   );
   return response.data;
 };

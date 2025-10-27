@@ -1,12 +1,12 @@
-import { Gender } from '@shared/types'
+import { Gender } from "@shared/types";
 
 export const GENDER_OPTIONS = [
   {
     value: Gender.male,
-    label: '남',
+    label: "남",
   },
   {
     value: Gender.female,
-    label: '여',
+    label: "여",
   },
-]
+];

@@ -1,14 +1,14 @@
-import { getDraftsForContractDocument } from '@shared/api'
-import { useQuery } from '@tanstack/react-query'
+import { getDraftsForContractDocument } from "@shared/api";
+import { useQuery } from "@tanstack/react-query";
 
 const useDrafts = () => {
   const query = useQuery({
-    queryKey: ['draftsForContractDocument'],
+    queryKey: ["draftsForContractDocument"],
     queryFn: async () => await getDraftsForContractDocument(),
     throwOnError: true,
-  })
+  });
 
-  return query
-}
+  return query;
+};
 
-export default useDrafts
+export default useDrafts;

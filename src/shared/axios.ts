@@ -1,11 +1,11 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable @typescript-eslint/semi */
-import axios, { AxiosError, AxiosInstance } from 'axios';
-import { deleteCookie, getCookie } from 'cookies-next';
-import { AxiosErrorData } from './types';
-import { getAccessToken, setTokenCookies } from './auth';
+import axios, { AxiosError, AxiosInstance } from "axios";
+import { deleteCookie, getCookie } from "cookies-next";
+import { AxiosErrorData } from "./types";
+import { getAccessToken, setTokenCookies } from "./auth";
 
-declare module 'axios' {
+declare module "axios" {
   export interface InternalAxiosRequestConfig {
     _retry?: boolean;
   }
@@ -18,10 +18,10 @@ export const instance: AxiosInstance = axios.create({
 
 export const setAuthorization = (accessToken: string) => {
   if (!accessToken) {
-    delete instance.defaults.headers.common['Authorization'];
+    delete instance.defaults.headers.common["Authorization"];
     return;
   }
-  instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  instance.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 };
 
 let isLoggedOut = false;
@@ -39,14 +39,14 @@ instance.interceptors.request.use(
     const accessToken = getAccessToken();
     if (accessToken) {
       // axios v1: headers is a plain object (string indexable)
-      (config.headers as any)['Authorization'] = `Bearer ${accessToken}`;
+      (config.headers as any)["Authorization"] = `Bearer ${accessToken}`;
     }
 
     return config;
   },
   (error: AxiosError | Error): Promise<AxiosError> => {
     return Promise.reject(error);
-  }
+  },
 );
 
 instance.interceptors.response.use(
@@ -54,7 +54,7 @@ instance.interceptors.response.use(
     const { method, url } = response.config;
     const { status } = response;
     console.log(
-      `🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`
+      `🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`,
     );
     return response;
   },
@@ -70,7 +70,7 @@ instance.interceptors.response.use(
     const message = (data as any)?.message || error.message;
 
     console.log(
-      `🚨 [API] ${method?.toUpperCase()} ${url} | Error ${status} ${statusText} | ${message}`
+      `🚨 [API] ${method?.toUpperCase()} ${url} | Error ${status} ${statusText} | ${message}`,
     );
 
     // 401 처리: 로그아웃 상태거나 refresh 토큰이 없으면 리프레시 시도하지 않음
@@ -81,14 +81,14 @@ instance.interceptors.response.use(
       }
 
       // cookies-next: string | undefined
-      const refreshToken = getCookie('refreshToken') as string | undefined;
+      const refreshToken = getCookie("refreshToken") as string | undefined;
       if (!refreshToken) {
         // 리프레시 토큰 없으면 로그인 화면으로
         try {
-          deleteCookie('refreshToken');
+          deleteCookie("refreshToken");
         } catch {}
-        setAuthorization('');
-        if (typeof window !== 'undefined') window.location.href = '/signin';
+        setAuthorization("");
+        if (typeof window !== "undefined") window.location.href = "/signin";
         return Promise.reject(error);
       }
 
@@ -99,7 +99,7 @@ instance.interceptors.response.use(
         const { data: tokens } = await instance.post<{
           accessToken: string;
           refreshToken: string;
-        }>('/auth/refresh', { refreshToken });
+        }>("/auth/refresh", { refreshToken });
 
         const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
           tokens;
@@ -113,14 +113,14 @@ instance.interceptors.response.use(
       } catch (refreshError) {
         // 리프레시 실패 → 세션 정리 후 로그인 화면
         try {
-          deleteCookie('refreshToken');
+          deleteCookie("refreshToken");
         } catch {}
-        setAuthorization('');
-        if (typeof window !== 'undefined') window.location.href = '/signin';
+        setAuthorization("");
+        if (typeof window !== "undefined") window.location.href = "/signin";
         return Promise.reject(refreshError as AxiosError);
       }
     }
 
     return Promise.reject(error);
-  }
+  },
 );

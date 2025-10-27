@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/semi */
-import { useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import classNames from 'classnames/bind';
-import useUserStore from '@zustand/useUserStore';
-import { getUserInfo as getUserInfoAPI } from '@shared/api';
-import styles from './GNB.module.scss';
-import { getAccessToken, clearAuth } from '@shared/auth';
-import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import classNames from "classnames/bind";
+import useUserStore from "@zustand/useUserStore";
+import { getUserInfo as getUserInfoAPI } from "@shared/api";
+import styles from "./GNB.module.scss";
+import { getAccessToken, clearAuth } from "@shared/auth";
+import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
 
@@ -39,7 +39,7 @@ const GNB = () => {
         if (e?.response?.status === 401) {
           // ✅ 토큰 만료 or 로그인 안 됨 → 쿠키/스토리지 정리 후 로그인 페이지로 이동
           clearAuth?.(); // accessToken, refreshToken 삭제 (deleteCookie 등)
-          router.replace('/signin');
+          router.replace("/signin");
         } else {
           console.error(e);
         }
@@ -53,7 +53,7 @@ const GNB = () => {
   }, [setUser, user.id, router]);
 
   return (
-    <nav className={cx('container')}>
+    <nav className={cx("container")}>
       <Link href="/">
         <Image
           src="/images/logo.png"
@@ -63,17 +63,17 @@ const GNB = () => {
           priority
         />
       </Link>
-      <Link href="/account" className={cx('profile')}>
+      <Link href="/account" className={cx("profile")}>
         <Image
-          src={imageUrl ?? '/images/default-profile.svg'}
+          src={imageUrl ?? "/images/default-profile.svg"}
           alt="프로필 이미지"
           width={36}
           height={36}
-          className={cx('image')}
+          className={cx("image")}
         />
-        <div className={cx('text')}>
-          <span className={cx('name')}>{name}</span>
-          <span className={cx('company')}>{companyName}</span>
+        <div className={cx("text")}>
+          <span className={cx("name")}>{name}</span>
+          <span className={cx("company")}>{companyName}</span>
         </div>
       </Link>
     </nav>

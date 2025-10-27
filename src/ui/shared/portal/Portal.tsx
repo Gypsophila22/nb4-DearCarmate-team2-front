@@ -1,21 +1,24 @@
-import { PropsWithChildren, useEffect, useState } from 'react'
-import { createPortal } from 'react-dom'
+import { PropsWithChildren, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type PortalProps = {
-  selector?: string
-}
+  selector?: string;
+};
 
-export const Portal = ({ children, selector }: PropsWithChildren<PortalProps>) => {
-  const [mountNode, setMountNode] = useState<null | Element>(null)
+export const Portal = ({
+  children,
+  selector,
+}: PropsWithChildren<PortalProps>) => {
+  const [mountNode, setMountNode] = useState<null | Element>(null);
 
   useEffect(() => {
     if (selector) {
-      const element = document.querySelector(selector)
-      if (element) setMountNode(element)
+      const element = document.querySelector(selector);
+      if (element) setMountNode(element);
     } else {
-      setMountNode(document.body)
+      setMountNode(document.body);
     }
-  }, [selector])
+  }, [selector]);
 
-  return mountNode ? createPortal(children, mountNode) : null
-}
+  return mountNode ? createPortal(children, mountNode) : null;
+};

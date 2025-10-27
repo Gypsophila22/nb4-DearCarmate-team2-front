@@ -1,18 +1,14 @@
-import classNames from 'classnames/bind'
-import styles from './Hint.module.scss'
+import classNames from "classnames/bind";
+import styles from "./Hint.module.scss";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 type HintProps = {
-  message: string
-}
+  message: string;
+};
 
 const Hint = ({ message }: HintProps) => {
-  return (
-    <div className={cx('container')}>
-      *{message}
-    </div>
-  )
-}
+  return <div className={cx("container")}>*{message}</div>;
+};
 
-export default Hint
+export default Hint;

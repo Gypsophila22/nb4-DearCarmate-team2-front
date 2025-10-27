@@ -1,14 +1,14 @@
-import { AxiosError } from 'axios';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import useConfirmModal from '@ui/shared/modal/confirm-modal/useConfirmModal';
+import { AxiosError } from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import useConfirmModal from "@ui/shared/modal/confirm-modal/useConfirmModal";
 import {
   AxiosErrorData,
   ContractStatus,
   ContractType,
   ContractsListType,
-} from '@shared/types';
-import { ContractStatusEditFormInput, editContractStatus } from '@shared/api';
-import { useContractContext } from '../util-contract-context/ContractContext';
+} from "@shared/types";
+import { ContractStatusEditFormInput, editContractStatus } from "@shared/api";
+import { useContractContext } from "../util-contract-context/ContractContext";
 
 const useEditContractStatus = () => {
   const queryClient = useQueryClient();
@@ -28,10 +28,10 @@ const useEditContractStatus = () => {
     mutationFn: async ({ id, data }) => await editContractStatus(id, data),
     onSuccess: (newContract, { id, data, prevStatus }) => {
       const queryData: ContractsListType | undefined = queryClient.getQueryData(
-        ['contracts', { keyword, searchBy }]
+        ["contracts", { keyword, searchBy }],
       );
       if (!queryData) return;
-      queryClient.setQueryData(['contracts', { keyword, searchBy }], {
+      queryClient.setQueryData(["contracts", { keyword, searchBy }], {
         ...queryData,
         [data.status]: {
           data: [...queryData[data.status].data, newContract],
@@ -39,16 +39,16 @@ const useEditContractStatus = () => {
         },
         [prevStatus]: {
           data: queryData[prevStatus].data.filter(
-            (contract) => contract.id !== id
+            (contract) => contract.id !== id,
           ),
           totalItemCount: queryData[prevStatus].totalItemCount - 1,
         },
       });
-      queryClient.invalidateQueries({ queryKey: ['customers'] });
+      queryClient.invalidateQueries({ queryKey: ["customers"] });
     },
     onError: (error) => {
       const text =
-        error?.response?.data?.message || '계약 건 상태 수정에 실패했습니다.';
+        error?.response?.data?.message || "계약 건 상태 수정에 실패했습니다.";
       openConfirmModal({
         text,
       });

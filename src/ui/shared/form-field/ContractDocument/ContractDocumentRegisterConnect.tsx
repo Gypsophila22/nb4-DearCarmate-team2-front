@@ -1,19 +1,19 @@
-import classNames from 'classnames/bind';
-import styles from './ContractDocument.module.scss';
-import { Controller, useFormContext } from 'react-hook-form';
-import { useRef, useState } from 'react';
-import GlobalLoading from '@ui/shared/global-loading/GlobalLoading';
-import Button from '@ui/shared/button/Button';
-import uploadFile from './uploadFile';
+import classNames from "classnames/bind";
+import styles from "./ContractDocument.module.scss";
+import { Controller, useFormContext } from "react-hook-form";
+import { useRef, useState } from "react";
+import GlobalLoading from "@ui/shared/global-loading/GlobalLoading";
+import Button from "@ui/shared/button/Button";
+import uploadFile from "./uploadFile";
 import {
   AxiosErrorData,
   ContractDocumentRegisterFormInput,
   DocumentType,
-} from '@shared/types';
-import Icon from '@ui/shared/icon/Icon';
-import Hint from '@ui/shared/input/Hint/Hint';
-import { AxiosError } from 'axios';
-import notify from '@ui/shared/notify';
+} from "@shared/types";
+import Icon from "@ui/shared/icon/Icon";
+import Hint from "@ui/shared/input/Hint/Hint";
+import { AxiosError } from "axios";
+import notify from "@ui/shared/notify";
 
 const cx = classNames.bind(styles);
 
@@ -23,7 +23,7 @@ const ContractDocumentRegisterConnect =
   ({}: ContractDocumentRegisterConnectProps) => {
     const { setValue, watch } =
       useFormContext<ContractDocumentRegisterFormInput>();
-    const contractDocuments = watch('contractDocuments');
+    const contractDocuments = watch("contractDocuments");
     const [isLoading, setIsLoading] = useState(false);
     const [previewFiles, setPreviewFiles] = useState<DocumentType[]>([]);
 
@@ -35,7 +35,7 @@ const ContractDocumentRegisterConnect =
       try {
         setIsLoading(true);
         const id = await uploadFile(file);
-        setValue('contractDocuments', [
+        setValue("contractDocuments", [
           ...contractDocuments,
           { id, fileName: file.name },
         ]);
@@ -43,7 +43,7 @@ const ContractDocumentRegisterConnect =
       } catch (error) {
         const text =
           (error as AxiosError<AxiosErrorData>)?.response?.data?.message ||
-          '파일 업로드에 실패했습니다. 다시 시도해주세요.';
+          "파일 업로드에 실패했습니다. 다시 시도해주세요.";
         notify.error(text);
       } finally {
         setIsLoading(false);
@@ -52,10 +52,10 @@ const ContractDocumentRegisterConnect =
 
     const handleRemoveFile = (id: number) => {
       setValue(
-        'contractDocuments',
+        "contractDocuments",
         contractDocuments.filter(
-          (contractDocument) => contractDocument.id !== id
-        )
+          (contractDocument) => contractDocument.id !== id,
+        ),
       );
       setPreviewFiles(previewFiles.filter((file) => file.id !== id));
     };
@@ -66,13 +66,13 @@ const ContractDocumentRegisterConnect =
           name="contractDocuments"
           rules={{
             validate: (value) =>
-              value.length > 0 || '계약서를 1개 이상 등록해주세요.',
+              value.length > 0 || "계약서를 1개 이상 등록해주세요.",
           }}
           render={({ fieldState: { error } }) => (
-            <div className={cx('container')}>
-              <div className={cx('previewFilesContainer')}>
+            <div className={cx("container")}>
+              <div className={cx("previewFilesContainer")}>
                 {previewFiles.map(({ id, fileName }) => (
-                  <div key={id} className={cx('item')}>
+                  <div key={id} className={cx("item")}>
                     <button onClick={() => handleRemoveFile(id)}>
                       <Icon name="checkbox-minus" width={24} height={24} />
                     </button>

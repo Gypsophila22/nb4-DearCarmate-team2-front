@@ -1,17 +1,16 @@
-import classNames from 'classnames/bind'
-import styles from './Loader.module.scss'
+import classNames from "classnames/bind";
+import styles from "./Loader.module.scss";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
-type LoaderProps = {
-}
+type LoaderProps = {};
 
-const Loader = ({ }: LoaderProps) => {
+const Loader = ({}: LoaderProps) => {
   return (
-    <div className={cx('container')}>
-      <div className={cx('loader')} />
+    <div className={cx("container")}>
+      <div className={cx("loader")} />
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

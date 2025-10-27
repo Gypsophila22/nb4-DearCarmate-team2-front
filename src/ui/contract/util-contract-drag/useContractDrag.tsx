@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/semi */
-import { ContractStatus, ContractType } from '@shared/types';
-import useEditContractStatus from '../data-access-contract-form/useEditContractStatus';
-import useFormModal from '@ui/shared/modal/form-modal/useFormModal';
-import { useRef, useState } from 'react';
-import ContractResolutionDateForm from '../feature-contract-form/ContractResolutionDateForm';
-import { useDrag } from 'react-dnd';
+import { ContractStatus, ContractType } from "@shared/types";
+import useEditContractStatus from "../data-access-contract-form/useEditContractStatus";
+import useFormModal from "@ui/shared/modal/form-modal/useFormModal";
+import { useRef, useState } from "react";
+import ContractResolutionDateForm from "../feature-contract-form/ContractResolutionDateForm";
+import { useDrag } from "react-dnd";
 
 const contractInProgressGroup: ContractStatus[] = [
   ContractStatus.carInspection,
@@ -23,7 +23,7 @@ const useContractDrag = (data: ContractType, status: ContractStatus) => {
   const dragRef = useRef(null);
 
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'CARD',
+    type: "CARD",
     item: { id: data.id },
     end: async (item, monitor) => {
       setIsLoading(true);
@@ -49,7 +49,7 @@ const useContractDrag = (data: ContractType, status: ContractStatus) => {
         ) {
           openFormModal({
             title: `계약 ${
-              newStatus === ContractStatus.contractSuccessful ? '성공' : '실패'
+              newStatus === ContractStatus.contractSuccessful ? "성공" : "실패"
             } 등록`,
             form: (
               <ContractResolutionDateForm

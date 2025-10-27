@@ -1,4 +1,9 @@
-@mixin flexbox($gap: normal, $direction: column, $justify: flex-start, $align: flex-start) {
+@mixin flexbox(
+  $gap: normal,
+  $direction: column,
+  $justify: flex-start,
+  $align: flex-start
+) {
   display: flex;
   gap: $gap;
   flex-direction: $direction;

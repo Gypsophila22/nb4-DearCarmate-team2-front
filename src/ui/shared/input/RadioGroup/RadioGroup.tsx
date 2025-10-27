@@ -1,22 +1,27 @@
-import classNames from 'classnames/bind'
-import styles from './RadioGroup.module.scss'
-import Radio from './Radio'
+import classNames from "classnames/bind";
+import styles from "./RadioGroup.module.scss";
+import Radio from "./Radio";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 type RadioGroupProps<V> = {
-  direction?: 'vertical' | 'horizontal'
-  value: V
-  onChange: (value: V) => void
+  direction?: "vertical" | "horizontal";
+  value: V;
+  onChange: (value: V) => void;
   options: {
-    value: V
-    label: string
-  }[]
-}
+    value: V;
+    label: string;
+  }[];
+};
 
-const RadioGroup = <V extends string>({ direction = 'horizontal', onChange, value, options }: RadioGroupProps<V>) => {
+const RadioGroup = <V extends string>({
+  direction = "horizontal",
+  onChange,
+  value,
+  options,
+}: RadioGroupProps<V>) => {
   return (
-    <div className={cx('container', { vetical: direction === 'vertical' })}>
+    <div className={cx("container", { vetical: direction === "vertical" })}>
       {options.map((option) => (
         <Radio
           key={option.value}
@@ -26,7 +31,7 @@ const RadioGroup = <V extends string>({ direction = 'horizontal', onChange, valu
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default RadioGroup
+export default RadioGroup;

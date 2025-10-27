@@ -1,7 +1,7 @@
-import { CARS_PAGE_SIZE } from '@ui/shared/pagination/constants'
-import { CarStatusParam, SearchByCar } from '@shared/types'
-import { useQuery } from '@tanstack/react-query'
-import { getCars } from '@shared/api'
+import { CARS_PAGE_SIZE } from "@ui/shared/pagination/constants";
+import { CarStatusParam, SearchByCar } from "@shared/types";
+import { useQuery } from "@tanstack/react-query";
+import { getCars } from "@shared/api";
 
 const useCars = ({
   page,
@@ -9,13 +9,13 @@ const useCars = ({
   keyword,
   status,
 }: {
-  page: number
-  searchBy: SearchByCar
-  keyword: string
-  status: CarStatusParam
+  page: number;
+  searchBy: SearchByCar;
+  keyword: string;
+  status: CarStatusParam;
 }) => {
   const query = useQuery({
-    queryKey: ['cars', { page, searchBy, keyword, status }],
+    queryKey: ["cars", { page, searchBy, keyword, status }],
     queryFn: async () =>
       await getCars({
         page,
@@ -25,9 +25,9 @@ const useCars = ({
         status,
       }),
     throwOnError: true,
-  })
+  });
 
-  return query
-}
+  return query;
+};
 
-export default useCars
+export default useCars;

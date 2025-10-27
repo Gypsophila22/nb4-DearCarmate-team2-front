@@ -1,20 +1,25 @@
-import { Control, Controller, ControllerProps, FieldPath, FieldPathValue, FieldValues, PathValue } from 'react-hook-form'
-import TextArea, { TextAreaProps } from '../input/TextArea/TextArea'
+import {
+  Control,
+  Controller,
+  ControllerProps,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  PathValue,
+} from "react-hook-form";
+import TextArea, { TextAreaProps } from "../input/TextArea/TextArea";
 
-type TextAreaConnectProps<
-  F extends FieldValues,
-  N extends FieldPath<F>
-> = Omit<TextAreaProps, 'value' | 'error' | 'onChange' | 'helperText'> & {
-  name: N
-  control?: Control<F>
-  defaultValue?: FieldPathValue<F, N>
-  rules?: ControllerProps<F, N>['rules']
-}
+type TextAreaConnectProps<F extends FieldValues, N extends FieldPath<F>> = Omit<
+  TextAreaProps,
+  "value" | "error" | "onChange" | "helperText"
+> & {
+  name: N;
+  control?: Control<F>;
+  defaultValue?: FieldPathValue<F, N>;
+  rules?: ControllerProps<F, N>["rules"];
+};
 
-const TextAreaConnect = <
-  F extends FieldValues,
-  N extends FieldPath<F>
->({
+const TextAreaConnect = <F extends FieldValues, N extends FieldPath<F>>({
   name,
   control,
   defaultValue,
@@ -25,7 +30,7 @@ const TextAreaConnect = <
     <Controller
       name={name}
       control={control}
-      defaultValue={(defaultValue ?? '') as PathValue<F, N>}
+      defaultValue={(defaultValue ?? "") as PathValue<F, N>}
       rules={rules}
       render={({ field, fieldState }) => (
         <TextArea
@@ -36,7 +41,7 @@ const TextAreaConnect = <
         />
       )}
     />
-  )
-}
+  );
+};
 
-export default TextAreaConnect
+export default TextAreaConnect;

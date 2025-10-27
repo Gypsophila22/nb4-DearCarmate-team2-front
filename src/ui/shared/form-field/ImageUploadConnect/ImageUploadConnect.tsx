@@ -1,14 +1,14 @@
-import classNames from 'classnames/bind';
-import styles from './ImageUploadConnect.module.scss';
-import { Controller, useFormContext } from 'react-hook-form';
-import uploadImage from './uploadImage';
-import Icon from '@ui/shared/icon/Icon';
-import Image from 'next/image';
-import { useState } from 'react';
-import GlobalLoading from '@ui/shared/global-loading/GlobalLoading';
-import { AxiosError } from 'axios';
-import { AxiosErrorData } from '@shared/types';
-import notify from '@ui/shared/notify';
+import classNames from "classnames/bind";
+import styles from "./ImageUploadConnect.module.scss";
+import { Controller, useFormContext } from "react-hook-form";
+import uploadImage from "./uploadImage";
+import Icon from "@ui/shared/icon/Icon";
+import Image from "next/image";
+import { useState } from "react";
+import GlobalLoading from "@ui/shared/global-loading/GlobalLoading";
+import { AxiosError } from "axios";
+import { AxiosErrorData } from "@shared/types";
+import notify from "@ui/shared/notify";
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +30,7 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
     } catch (error) {
       const text =
         (error as AxiosError<AxiosErrorData>)?.response?.data?.message ||
-        '파일 업로드에 실패했습니다. 다시 시도해주세요.';
+        "파일 업로드에 실패했습니다. 다시 시도해주세요.";
       notify.error(text);
     } finally {
       setIsLoading(false);
@@ -42,14 +42,14 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
       <Controller
         name={name}
         render={({ field: { value } }) => (
-          <div className={cx('container')}>
-            <div className={cx('imageWrapper')}>
+          <div className={cx("container")}>
+            <div className={cx("imageWrapper")}>
               <Image
-                src={value || '/images/default-profile.svg'}
+                src={value || "/images/default-profile.svg"}
                 width={140}
                 height={140}
                 alt="프로필 이미지"
-                className={cx('image')}
+                className={cx("image")}
               />
             </div>
             {/* TODO-2: label 태그 eslint 에러 해결 */}
@@ -61,7 +61,7 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
                 hidden
                 onChange={handleUploadImage}
               />
-              <div className={cx('editButton')}>
+              <div className={cx("editButton")}>
                 <Icon name="edit-button" width={48} height={48} />
               </div>
             </label>

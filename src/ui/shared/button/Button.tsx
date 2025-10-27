@@ -1,13 +1,13 @@
-import classNames from 'classnames/bind'
-import styles from './Button.module.scss'
+import classNames from "classnames/bind";
+import styles from "./Button.module.scss";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 type ButtonProps = {
-  children: React.ReactNode
-  size: 'small' | 'large'
-  theme: 'red' | 'gray' | 'outline'
-} & React.ComponentPropsWithoutRef<'button'>
+  children: React.ReactNode;
+  size: "small" | "large";
+  theme: "red" | "gray" | "outline";
+} & React.ComponentPropsWithoutRef<"button">;
 
 const Button = ({
   children,
@@ -18,13 +18,13 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={cx('container', size, theme, className)}
-      type='button'
+      className={cx("container", size, theme, className)}
+      type="button"
       {...buttonProps}
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

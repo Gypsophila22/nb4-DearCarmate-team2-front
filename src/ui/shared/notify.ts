@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/semi */
-import { modalBus } from './modal/modalbus';
+import { modalBus } from "./modal/modalbus";
 
 export const notify = {
   error(text: string, onCloseSuccess?: () => void) {
