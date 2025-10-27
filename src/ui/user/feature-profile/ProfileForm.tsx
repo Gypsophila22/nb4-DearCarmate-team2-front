@@ -37,9 +37,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
     const editedUserData = {
       ...data,
       password: data.password ? data.password : undefined,
-      passwordConfirmation: data.passwordConfirmation
-        ? data.passwordConfirmation
-        : undefined,
+      passwordConfirmation: data.passwordConfirmation ? data.passwordConfirmation : undefined,
     };
     editUser(editedUserData);
     setValue("currentPassword", "");
@@ -82,8 +80,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
               autoComplete="employee-number"
               placeholder="사원번호를 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
               }}
             />
           </div>
@@ -94,8 +91,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
               autoComplete="tel"
               placeholder="연락처를 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
                 pattern: {
                   value: PHONE_NUMBER_VALIDATION_REGEXP,
                   message: "전화번호 형식에 맞지 않습니다(하이픈 포함 필요)",
@@ -124,8 +120,7 @@ const ProfileForm = ({}: ProfileFormProps) => {
               placeholder="새 비밀번호를 한번 더 입력해 주세요"
               rules={{
                 validate: (value) =>
-                  value === methods.getValues("password") ||
-                  "비밀번호가 일치하지 않습니다",
+                  value === methods.getValues("password") || "비밀번호가 일치하지 않습니다",
               }}
             />
           </div>

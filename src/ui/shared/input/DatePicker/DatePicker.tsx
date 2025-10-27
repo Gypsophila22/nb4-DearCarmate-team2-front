@@ -31,9 +31,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     },
     ref,
   ) => {
-    const [date, setDate] = useState<Date | undefined>(
-      value ? new Date(value) : undefined,
-    );
+    const [date, setDate] = useState<Date | undefined>(value ? new Date(value) : undefined);
 
     const handleChange = (date: Date) => {
       setDate(date);

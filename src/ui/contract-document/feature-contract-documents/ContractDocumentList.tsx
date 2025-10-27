@@ -14,11 +14,7 @@ type ContractDocumentListProps = {
   page: number;
 };
 
-const ContractDocumentList = ({
-  keyword,
-  page,
-  searchBy,
-}: ContractDocumentListProps) => {
+const ContractDocumentList = ({ keyword, page, searchBy }: ContractDocumentListProps) => {
   const { data: contractDocumentsData, isLoading } = useContractDocuments({
     keyword,
     page,

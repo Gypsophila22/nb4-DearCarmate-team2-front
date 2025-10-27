@@ -55,13 +55,7 @@ const GNB = () => {
   return (
     <nav className={cx("container")}>
       <Link href="/">
-        <Image
-          src="/images/logo.png"
-          alt="로고"
-          width={130}
-          height={32}
-          priority
-        />
+        <Image src="/images/logo.png" alt="로고" width={130} height={32} priority />
       </Link>
       <Link href="/account" className={cx("profile")}>
         <Image

@@ -19,9 +19,7 @@ const ContractDocumentDownloadForm = ({
   onClose,
   onDownload,
 }: ContractDocumentDownloadFormProps) => {
-  const [selectedDocuments, setSelectedDocuments] = useState<DocumentType[]>(
-    [],
-  );
+  const [selectedDocuments, setSelectedDocuments] = useState<DocumentType[]>([]);
 
   const handleSelectFile = (document: DocumentType) => {
     setSelectedDocuments((prevDocuments) => [...prevDocuments, document]);
@@ -46,9 +44,7 @@ const ContractDocumentDownloadForm = ({
               <button
                 type="button"
                 onClick={() =>
-                  selected
-                    ? handleCancelSelectFile(document)
-                    : handleSelectFile(document)
+                  selected ? handleCancelSelectFile(document) : handleSelectFile(document)
                 }
               >
                 <Icon
@@ -66,11 +62,7 @@ const ContractDocumentDownloadForm = ({
         <Button onClick={onClose} type="button" size="small" theme="gray">
           취소
         </Button>
-        <Button
-          onClick={() => onDownload(selectedDocuments)}
-          size="small"
-          theme="outline"
-        >
+        <Button onClick={() => onDownload(selectedDocuments)} size="small" theme="outline">
           선택 다운로드
         </Button>
         <Button onClick={() => onDownload(documents)} size="small" theme="red">

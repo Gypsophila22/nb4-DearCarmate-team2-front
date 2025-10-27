@@ -53,21 +53,12 @@ const CarsInfoPage = ({
           </div>
           <div className={cx("buttonContainer")}>
             <CarRegisterButton />
-            <Button
-              onClick={() => router.push("/bulk-upload")}
-              size="small"
-              theme="red"
-            >
+            <Button onClick={() => router.push("/bulk-upload")} size="small" theme="red">
               대용량 등록
             </Button>
           </div>
         </div>
-        <CarsInfo
-          searchBy={searchBy}
-          keyword={keyword}
-          page={page}
-          status={status}
-        />
+        <CarsInfo searchBy={searchBy} keyword={keyword} page={page} status={status} />
       </PageLayout>
     </>
   );
@@ -81,13 +72,11 @@ export const getServerSideProps = (async ({ query }) => {
     status: statusParam,
   } = query;
   const searchBy =
-    SearchByCar[searchByParam as keyof typeof SearchByCar] ||
-    SearchByCar["carNumber"];
+    SearchByCar[searchByParam as keyof typeof SearchByCar] || SearchByCar["carNumber"];
   const keyword = convertKeywordParamToString(keywordParam);
   const page = convertPageParamToNumber(pageParam);
   const status =
-    CarStatusParam[statusParam as keyof typeof CarStatusParam] ||
-    CarStatusParam["total"];
+    CarStatusParam[statusParam as keyof typeof CarStatusParam] || CarStatusParam["total"];
   return {
     props: {
       searchBy,

@@ -48,9 +48,7 @@ const useContractDrag = (data: ContractType, status: ContractStatus) => {
           contractOutcomeGroup.includes(newStatus)
         ) {
           openFormModal({
-            title: `계약 ${
-              newStatus === ContractStatus.contractSuccessful ? "성공" : "실패"
-            } 등록`,
+            title: `계약 ${newStatus === ContractStatus.contractSuccessful ? "성공" : "실패"} 등록`,
             form: (
               <ContractResolutionDateForm
                 onCancel={closeFormModal}

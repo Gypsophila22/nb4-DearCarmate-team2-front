@@ -9,10 +9,7 @@ const getPageArray = (
   const shownStart = (paginationNum - 1) * pagesPerPagination + 1;
   const shownEnd = Math.min(totalPage, paginationNum * pagesPerPagination);
 
-  return Array.from(
-    { length: shownEnd - shownStart + 1 },
-    (_, i) => i + shownStart,
-  );
+  return Array.from({ length: shownEnd - shownStart + 1 }, (_, i) => i + shownStart);
 };
 
 export default getPageArray;

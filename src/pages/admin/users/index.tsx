@@ -45,14 +45,9 @@ const UserListPage = ({
 };
 
 export const getServerSideProps = (async ({ query }) => {
-  const {
-    searchBy: searchByParam,
-    keyword: keywordParam,
-    page: pageParam,
-  } = query;
+  const { searchBy: searchByParam, keyword: keywordParam, page: pageParam } = query;
   const searchBy =
-    SearchByUser[searchByParam as keyof typeof SearchByUser] ||
-    SearchByUser["companyName"];
+    SearchByUser[searchByParam as keyof typeof SearchByUser] || SearchByUser["companyName"];
   const keyword = convertKeywordParamToString(keywordParam);
   const page = convertPageParamToNumber(pageParam);
   return {

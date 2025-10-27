@@ -8,12 +8,7 @@ const useRegisterCar = () => {
   const { openConfirmModal } = useConfirmModal();
   const queryClient = useQueryClient();
 
-  const mutation = useMutation<
-    CarType,
-    AxiosError<AxiosErrorData>,
-    CarFormInput,
-    unknown
-  >({
+  const mutation = useMutation<CarType, AxiosError<AxiosErrorData>, CarFormInput, unknown>({
     mutationFn: async (data) => await registerCar(data),
     onSuccess: () => {
       openConfirmModal({
@@ -24,8 +19,7 @@ const useRegisterCar = () => {
       });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "차량 정보 등록에 실패했습니다.";
+      const text = error?.response?.data?.message || "차량 정보 등록에 실패했습니다.";
       openConfirmModal({
         text,
       });

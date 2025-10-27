@@ -22,10 +22,7 @@ type ProviderProps = {
   status: CarStatusParam;
 };
 
-const CarContextProvider = ({
-  children,
-  ...value
-}: PropsWithChildren<ProviderProps>) => {
+const CarContextProvider = ({ children, ...value }: PropsWithChildren<ProviderProps>) => {
   return <CarContext.Provider value={value}>{children}</CarContext.Provider>;
 };
 

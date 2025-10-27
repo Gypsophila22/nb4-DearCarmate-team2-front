@@ -40,6 +40,8 @@
     "@typescript-eslint/parser": "^7.5.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.1.0",

@@ -10,10 +10,7 @@ import {
 import { TextFieldProps } from "../input/TextField/TextField";
 import PasswordField from "../input/PasswordField/PasswordField";
 
-type PasswordFieldConnectProps<
-  F extends FieldValues,
-  N extends FieldPath<F>,
-> = Omit<
+type PasswordFieldConnectProps<F extends FieldValues, N extends FieldPath<F>> = Omit<
   TextFieldProps,
   "type" | "value" | "error" | "onChange" | "helperText"
 > & {

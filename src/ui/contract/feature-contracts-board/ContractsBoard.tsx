@@ -28,13 +28,8 @@ const ContractsBoard = ({ keyword, searchBy }: ContractsBoardProps) => {
       </div>
     );
 
-  const {
-    carInspection,
-    priceNegotiation,
-    contractDraft,
-    contractFailed,
-    contractSuccessful,
-  } = contractsData;
+  const { carInspection, priceNegotiation, contractDraft, contractFailed, contractSuccessful } =
+    contractsData;
   return (
     <ContractContextProvider searchBy={searchBy} keyword={keyword}>
       <DndProvider backend={HTML5Backend}>

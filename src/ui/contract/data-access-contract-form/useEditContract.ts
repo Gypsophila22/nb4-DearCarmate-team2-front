@@ -24,9 +24,10 @@ const useEditContract = () => {
       openConfirmModal({
         text: "계약 건 수정에 성공했습니다.",
       });
-      const queryData: ContractsListType | undefined = queryClient.getQueryData(
-        ["contracts", { keyword, searchBy }],
-      );
+      const queryData: ContractsListType | undefined = queryClient.getQueryData([
+        "contracts",
+        { keyword, searchBy },
+      ]);
       if (!queryData) return;
       queryClient.setQueryData(["contracts", { keyword, searchBy }], {
         ...queryData,
@@ -43,8 +44,7 @@ const useEditContract = () => {
       queryClient.invalidateQueries({ queryKey: ["customers"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "계약 건 수정에 실패했습니다.";
+      const text = error?.response?.data?.message || "계약 건 수정에 실패했습니다.";
       openConfirmModal({
         text,
       });

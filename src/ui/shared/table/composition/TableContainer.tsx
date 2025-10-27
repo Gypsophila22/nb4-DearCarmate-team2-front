@@ -6,10 +6,7 @@ const cx = classNames.bind(styles);
 
 type TableContainerProps = {} & React.ComponentPropsWithoutRef<"div">;
 
-export const TableContainer = ({
-  children,
-  ...restProps
-}: TableContainerProps) => {
+export const TableContainer = ({ children, ...restProps }: TableContainerProps) => {
   return (
     <div className={cx("container")} {...restProps}>
       {children}

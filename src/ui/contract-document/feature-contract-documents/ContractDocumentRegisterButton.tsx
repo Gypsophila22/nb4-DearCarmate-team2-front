@@ -6,38 +6,34 @@ import ContractDocumentRegisterForm from "../feature-contract-document-form/Cont
 
 type ContractDocumentRegisterButtonProps = {};
 
-const ContractDocumentRegisterButton =
-  ({}: ContractDocumentRegisterButtonProps) => {
-    const { openFormModal, closeFormModal } = useFormModal();
-    const { mutate: registerContractDocuments } =
-      useRegisterContractDocuments();
+const ContractDocumentRegisterButton = ({}: ContractDocumentRegisterButtonProps) => {
+  const { openFormModal, closeFormModal } = useFormModal();
+  const { mutate: registerContractDocuments } = useRegisterContractDocuments();
 
-    const handleRegisterContractDocument = (
-      data: ContractDocumentRegisterFormInput,
-    ) => {
-      registerContractDocuments(data);
-      closeFormModal();
-    };
-
-    return (
-      <Button
-        onClick={() => {
-          openFormModal({
-            title: "계약서 추가",
-            form: (
-              <ContractDocumentRegisterForm
-                onClose={closeFormModal}
-                onSubmit={handleRegisterContractDocument}
-              />
-            ),
-          });
-        }}
-        size="small"
-        theme="red"
-      >
-        계약서 추가
-      </Button>
-    );
+  const handleRegisterContractDocument = (data: ContractDocumentRegisterFormInput) => {
+    registerContractDocuments(data);
+    closeFormModal();
   };
+
+  return (
+    <Button
+      onClick={() => {
+        openFormModal({
+          title: "계약서 추가",
+          form: (
+            <ContractDocumentRegisterForm
+              onClose={closeFormModal}
+              onSubmit={handleRegisterContractDocument}
+            />
+          ),
+        });
+      }}
+      size="small"
+      theme="red"
+    >
+      계약서 추가
+    </Button>
+  );
+};
 
 export default ContractDocumentRegisterButton;

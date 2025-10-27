@@ -19,9 +19,7 @@ type AuthCheckModalProps = {
   /**
    * confirm 모드 전용: 성공 시 true/void, 실패 시 false 또는 에러 메시지(string) 반환
    */
-  onConfirm?: (
-    password: string,
-  ) => Promise<boolean | string | void> | boolean | string | void;
+  onConfirm?: (password: string) => Promise<boolean | string | void> | boolean | string | void;
 
   /** ❗실패 시 외부(전역) 모달로 메시지 띄우고 싶을 때 사용 */
   onErrorMessage?: (msg: string) => void;
@@ -43,10 +41,7 @@ const AuthCheckModal = forwardRef<HTMLDialogElement, AuthCheckModalProps>(
             onClose();
           } else {
             // 실패 → 이 모달 닫고, 외부 모달로 메시지 노출
-            const msg =
-              typeof result === "string"
-                ? result
-                : "비밀번호가 올바르지 않습니다.";
+            const msg = typeof result === "string" ? result : "비밀번호가 올바르지 않습니다.";
             onClose();
             onErrorMessage?.(msg);
           }
@@ -81,12 +76,7 @@ const AuthCheckModal = forwardRef<HTMLDialogElement, AuthCheckModalProps>(
                 />
               </div>
               <div className={cx("buttonContainer")}>
-                <Button
-                  type="button"
-                  size="small"
-                  theme="gray"
-                  onClick={onClose}
-                >
+                <Button type="button" size="small" theme="gray" onClick={onClose}>
                   취소
                 </Button>
 
@@ -95,12 +85,7 @@ const AuthCheckModal = forwardRef<HTMLDialogElement, AuthCheckModalProps>(
                     제출
                   </Button>
                 ) : (
-                  <Button
-                    type="button"
-                    size="small"
-                    theme="red"
-                    onClick={handleConfirmClick}
-                  >
+                  <Button type="button" size="small" theme="red" onClick={handleConfirmClick}>
                     확인
                   </Button>
                 )}

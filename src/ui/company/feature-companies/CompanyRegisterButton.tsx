@@ -20,12 +20,7 @@ const CompanyRegisterButton = ({}: CompanyRegisterButtonProps) => {
       onClick={() => {
         openFormModal({
           title: "기업 등록",
-          form: (
-            <CompanyForm
-              onCancel={closeFormModal}
-              onSubmit={handleRegisterCompany}
-            />
-          ),
+          form: <CompanyForm onCancel={closeFormModal} onSubmit={handleRegisterCompany} />,
         });
       }}
       size="small"

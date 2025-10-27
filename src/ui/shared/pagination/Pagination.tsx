@@ -13,11 +13,7 @@ type PaginationProps = {
   scroll?: boolean;
 };
 
-const Pagination = ({
-  currentPage,
-  totalPages,
-  scroll = true,
-}: PaginationProps) => {
+const Pagination = ({ currentPage, totalPages, scroll = true }: PaginationProps) => {
   const pageArray = getPageArray(currentPage, totalPages);
   const { updateQueryURL } = useUpdateQueryURL();
 
@@ -52,11 +48,7 @@ const Pagination = ({
         scroll={scroll}
       >
         <Icon
-          name={
-            currentPage === totalPages
-              ? "arrow-left-disabled"
-              : "arrow-left-active"
-          }
+          name={currentPage === totalPages ? "arrow-left-disabled" : "arrow-left-active"}
           width={28}
           height={28}
           alt="오른쪽 화살표"

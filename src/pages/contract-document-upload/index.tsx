@@ -40,26 +40,17 @@ const ContractDocumentUploadPage = ({
           />
           <ContractDocumentRegisterButton />
         </div>
-        <ContractDocumentList
-          searchBy={searchBy}
-          keyword={keyword}
-          page={page}
-        />
+        <ContractDocumentList searchBy={searchBy} keyword={keyword} page={page} />
       </PageLayout>
     </>
   );
 };
 
 export const getServerSideProps = (async ({ query }) => {
-  const {
-    searchBy: searchByParam,
-    keyword: keywordParam,
-    page: pageParam,
-  } = query;
+  const { searchBy: searchByParam, keyword: keywordParam, page: pageParam } = query;
   const searchBy =
-    SearchByContractDocument[
-      searchByParam as keyof typeof SearchByContractDocument
-    ] || SearchByContractDocument["contractName"];
+    SearchByContractDocument[searchByParam as keyof typeof SearchByContractDocument] ||
+    SearchByContractDocument["contractName"];
   const keyword = convertKeywordParamToString(keywordParam);
   const page = convertPageParamToNumber(pageParam);
   return {

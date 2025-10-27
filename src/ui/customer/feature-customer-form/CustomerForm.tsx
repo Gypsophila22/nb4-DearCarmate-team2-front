@@ -22,11 +22,7 @@ type CustomerFormProps = {
   defaultValues?: CustomerFormInput;
 };
 
-const CustomerForm = ({
-  onSubmit,
-  onCancel,
-  defaultValues,
-}: CustomerFormProps) => {
+const CustomerForm = ({ onSubmit, onCancel, defaultValues }: CustomerFormProps) => {
   const methods = useForm<CustomerFormInput>({
     defaultValues: { ageGroup: null, region: null, ...defaultValues },
   });
@@ -42,8 +38,7 @@ const CustomerForm = ({
               name="name"
               placeholder="고객명을 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
                 maxLength: { value: 10, message: "10자 이내로 입력해 주세요" },
               }}
             />
@@ -58,8 +53,7 @@ const CustomerForm = ({
               name="phoneNumber"
               placeholder="연락처를 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
                 pattern: {
                   value: PHONE_NUMBER_VALIDATION_REGEXP,
                   message: "전화번호 형식에 맞지 않습니다(하이픈 포함 필요)",
@@ -107,10 +101,7 @@ const CustomerForm = ({
           </div>
           <div>
             <FieldLabel label="메모" />
-            <TextAreaConnect
-              name="memo"
-              placeholder="메모 사항을 입력해 주세요"
-            />
+            <TextAreaConnect name="memo" placeholder="메모 사항을 입력해 주세요" />
           </div>
         </div>
         <div className={cx("buttonContainer")}>

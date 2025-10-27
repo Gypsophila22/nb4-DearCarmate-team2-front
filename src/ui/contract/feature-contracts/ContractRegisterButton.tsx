@@ -24,12 +24,7 @@ const ContractRegisterButton = ({}: ContractRegisterButtonProps) => {
       onClick={() => {
         openFormModal({
           title: "계약 건 등록",
-          form: (
-            <ContractForm
-              onSubmit={handleRegisterContract}
-              onCancel={closeFormModal}
-            />
-          ),
+          form: <ContractForm onSubmit={handleRegisterContract} onCancel={closeFormModal} />,
         });
       }}
       size="small"

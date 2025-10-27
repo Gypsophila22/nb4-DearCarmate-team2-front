@@ -14,11 +14,7 @@ type CompanyFormProps = {
   defaultValues?: CompanyFormInput;
 };
 
-const CompanyForm = ({
-  onSubmit,
-  onCancel,
-  defaultValues,
-}: CompanyFormProps) => {
+const CompanyForm = ({ onSubmit, onCancel, defaultValues }: CompanyFormProps) => {
   const methods = useForm<CompanyFormInput>({ defaultValues });
   const { handleSubmit } = methods;
 
@@ -32,8 +28,7 @@ const CompanyForm = ({
               name="companyName"
               placeholder="기업명을 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
               }}
             />
           </div>
@@ -43,8 +38,7 @@ const CompanyForm = ({
               name="companyCode"
               placeholder="기업 코드를 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
               }}
             />
           </div>

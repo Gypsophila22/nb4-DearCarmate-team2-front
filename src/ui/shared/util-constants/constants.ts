@@ -1,8 +1,7 @@
 import { CarStatus, ContractStatus, Gender } from "@shared/types";
 
 export const URL_VALIDATION_REGEXP = /^(https?:\/\/)/;
-export const PASSWORD_VALIDATION_REGEXP =
-  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+export const PASSWORD_VALIDATION_REGEXP = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
 export const EMAIL_VALIDATION_REGEXP = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 export const PHONE_NUMBER_VALIDATION_REGEXP = /^\d{2,3}-\d{3,4}-\d{4}$/;
 

@@ -83,16 +83,13 @@ export const SEARCH_BY_CONTRACT_DOCUMENTS_FILTERS = [
 ];
 
 const currentYear = new Date().getFullYear();
-export const CAR_MANUFACTURING_YEAR_FILTERS = Array.from(
-  { length: 51 },
-  (_, i) => {
-    const year = currentYear - i;
-    return {
-      data: year,
-      text: year.toString(),
-    };
-  },
-);
+export const CAR_MANUFACTURING_YEAR_FILTERS = Array.from({ length: 51 }, (_, i) => {
+  const year = currentYear - i;
+  return {
+    data: year,
+    text: year.toString(),
+  };
+});
 
 export const CAR_STATUS_FILTERS = [
   {

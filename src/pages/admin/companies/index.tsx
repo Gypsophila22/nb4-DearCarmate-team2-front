@@ -47,11 +47,7 @@ const CompanyListPage = ({
 };
 
 export const getServerSideProps = (async ({ query }) => {
-  const {
-    searchBy: searchByParam,
-    keyword: keywordParam,
-    page: pageParam,
-  } = query;
+  const { searchBy: searchByParam, keyword: keywordParam, page: pageParam } = query;
   const searchBy =
     SearchByCompany[searchByParam as keyof typeof SearchByCompany] ||
     SearchByCompany["companyName"];

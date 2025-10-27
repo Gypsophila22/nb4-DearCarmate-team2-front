@@ -15,19 +15,16 @@ const useDeleteCustomer = () => {
   const router = useRouter();
   const { updateQueryURL } = useUpdateQueryURL();
 
-  const mutation = useMutation<
-    { message: string },
-    AxiosError<AxiosErrorData>,
-    number,
-    unknown
-  >({
+  const mutation = useMutation<{ message: string }, AxiosError<AxiosErrorData>, number, unknown>({
     mutationFn: async (id) => await deleteCustomer(id),
     onSuccess: async () => {
       openConfirmModal({
         text: "고객 정보 삭제에 성공했습니다.",
       });
-      const queryData: OffsetPagination<CustomerType> | undefined =
-        queryClient.getQueryData(["customers", { keyword, page, searchBy }]);
+      const queryData: OffsetPagination<CustomerType> | undefined = queryClient.getQueryData([
+        "customers",
+        { keyword, page, searchBy },
+      ]);
       if (!queryData) return;
       const { data } = queryData;
       if (data.length <= 1 && page > 1)
@@ -38,8 +35,7 @@ const useDeleteCustomer = () => {
       queryClient.invalidateQueries({ queryKey: ["customersForContract"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "고객 정보 삭제에 실패했습니다.";
+      const text = error?.response?.data?.message || "고객 정보 삭제에 실패했습니다.";
       openConfirmModal({
         text,
       });

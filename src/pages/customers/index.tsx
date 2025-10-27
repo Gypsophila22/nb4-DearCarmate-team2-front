@@ -44,11 +44,7 @@ const CustomersInfoPage = ({
           />
           <div className={cx("buttonContainer")}>
             <CustomerRegisterButton />
-            <Button
-              onClick={() => router.push("/bulk-upload")}
-              size="small"
-              theme="red"
-            >
+            <Button onClick={() => router.push("/bulk-upload")} size="small" theme="red">
               대용량 등록
             </Button>
           </div>
@@ -60,14 +56,9 @@ const CustomersInfoPage = ({
 };
 
 export const getServerSideProps = (async ({ query }) => {
-  const {
-    searchBy: searchByParam,
-    keyword: keywordParam,
-    page: pageParam,
-  } = query;
+  const { searchBy: searchByParam, keyword: keywordParam, page: pageParam } = query;
   const searchBy =
-    SearchByCustomer[searchByParam as keyof typeof SearchByCustomer] ||
-    SearchByCustomer["name"];
+    SearchByCustomer[searchByParam as keyof typeof SearchByCustomer] || SearchByCustomer["name"];
   const keyword = convertKeywordParamToString(keywordParam);
   const page = convertPageParamToNumber(pageParam);
   return {

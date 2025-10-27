@@ -24,10 +24,7 @@ const SignInForm = ({}: SignInFormProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className={cx("container")}
-        onSubmit={methods.handleSubmit(handleSignIn)}
-      >
+      <form className={cx("container")} onSubmit={methods.handleSubmit(handleSignIn)}>
         <div className={cx("inputs")}>
           <div>
             <FieldLabel label="이메일" />

@@ -1,11 +1,7 @@
 import { AxiosError } from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useConfirmModal from "@ui/shared/modal/confirm-modal/useConfirmModal";
-import {
-  AxiosErrorData,
-  ContractStatus,
-  ContractsListType,
-} from "@shared/types";
+import { AxiosErrorData, ContractStatus, ContractsListType } from "@shared/types";
 import { deleteContract } from "@shared/api";
 import { useContractContext } from "../util-contract-context/ContractContext";
 
@@ -26,9 +22,10 @@ const useDeleteContract = () => {
       openConfirmModal({
         text: "계약 건 삭제에 성공했습니다.",
       });
-      const queryData: ContractsListType | undefined = queryClient.getQueryData(
-        ["contracts", { keyword, searchBy }],
-      );
+      const queryData: ContractsListType | undefined = queryClient.getQueryData([
+        "contracts",
+        { keyword, searchBy },
+      ]);
       if (!queryData) return;
       queryClient.setQueryData(["contracts", { keyword, searchBy }], {
         ...queryData,
@@ -40,8 +37,7 @@ const useDeleteContract = () => {
       queryClient.invalidateQueries({ queryKey: ["customers"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "계약 건 삭제에 실패했습니다.";
+      const text = error?.response?.data?.message || "계약 건 삭제에 실패했습니다.";
       openConfirmModal({
         text,
       });

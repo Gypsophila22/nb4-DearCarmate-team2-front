@@ -21,11 +21,7 @@ type ContractFormProps = {
   };
 };
 
-const ContractForm = ({
-  onSubmit,
-  onCancel,
-  defaultValues,
-}: ContractFormProps) => {
+const ContractForm = ({ onSubmit, onCancel, defaultValues }: ContractFormProps) => {
   const methods = useForm<ContractFormInput>({
     defaultValues: {
       ...defaultValues,
@@ -38,9 +34,7 @@ const ContractForm = ({
   });
   const { handleSubmit } = methods;
 
-  const { data: carsForContractData = [] } = useCarsForContract(
-    defaultValues?.carId,
-  );
+  const { data: carsForContractData = [] } = useCarsForContract(defaultValues?.carId);
   const { data: customersForContractData = [] } = useCustomersForContract();
   const { data: usersForContractData = [] } = useUsersForContract();
 

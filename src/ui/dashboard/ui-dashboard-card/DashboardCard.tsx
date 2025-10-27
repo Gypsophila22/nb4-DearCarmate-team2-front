@@ -45,9 +45,7 @@ const DashboardCard = ({ data }: DashboardCardProps) => {
               {`지난 달 : ${formatDashboardMoney(lastMonthSales)}`}
             </div>
           </div>
-          <div className={cx("present")}>
-            {formatDashboardMoney(monthlySales)}
-          </div>
+          <div className={cx("present")}>{formatDashboardMoney(monthlySales)}</div>
         </div>
       </div>
       <div className={cx("item")}>

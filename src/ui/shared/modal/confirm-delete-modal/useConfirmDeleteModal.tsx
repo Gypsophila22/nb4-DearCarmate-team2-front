@@ -12,11 +12,7 @@ type ConfirmDeleteModalArgs = {
 const useConfirmDeleteModal = () => {
   const { closeModal, isOpened, openModal } = useContext(FormModalContext);
 
-  const openConfirmDeleteModal = ({
-    onSubmit,
-    deleteType,
-    itemName,
-  }: ConfirmDeleteModalArgs) => {
+  const openConfirmDeleteModal = ({ onSubmit, deleteType, itemName }: ConfirmDeleteModalArgs) => {
     openModal(
       <ModalBase type="confirm" onClose={closeModal}>
         <ConfirmDeleteModal

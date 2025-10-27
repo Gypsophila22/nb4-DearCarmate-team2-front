@@ -5,10 +5,7 @@ type PortalProps = {
   selector?: string;
 };
 
-export const Portal = ({
-  children,
-  selector,
-}: PropsWithChildren<PortalProps>) => {
+export const Portal = ({ children, selector }: PropsWithChildren<PortalProps>) => {
   const [mountNode, setMountNode] = useState<null | Element>(null);
 
   useEffect(() => {

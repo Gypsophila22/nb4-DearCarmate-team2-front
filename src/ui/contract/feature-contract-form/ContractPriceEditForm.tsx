@@ -34,8 +34,7 @@ const ContractPriceEditForm = ({
             defaultValue=""
             rules={{
               required: "필수 입력사항입니다.",
-              validate: (value) =>
-                parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
+              validate: (value) => parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
             }}
             render={({ field, fieldState }) => (
               <TextField

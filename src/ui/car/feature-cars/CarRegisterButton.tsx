@@ -20,9 +20,7 @@ const CarRegisterButton = ({}: CarRegisterButtonProps) => {
       onClick={() => {
         openFormModal({
           title: "차량 정보 등록",
-          form: (
-            <CarForm onSubmit={handleRegisterCar} onCancel={closeFormModal} />
-          ),
+          form: <CarForm onSubmit={handleRegisterCar} onCancel={closeFormModal} />,
         });
       }}
       size="small"

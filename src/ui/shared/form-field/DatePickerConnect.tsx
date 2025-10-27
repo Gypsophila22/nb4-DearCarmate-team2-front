@@ -8,10 +8,10 @@ import {
 } from "react-hook-form";
 import DatePicker, { DatePickerProps } from "../input/DatePicker/DatePicker";
 
-type DatePickerConnectProps<
-  F extends FieldValues,
-  N extends FieldPath<F>,
-> = Omit<DatePickerProps, "value" | "error" | "onChange" | "helperText"> & {
+type DatePickerConnectProps<F extends FieldValues, N extends FieldPath<F>> = Omit<
+  DatePickerProps,
+  "value" | "error" | "onChange" | "helperText"
+> & {
   name: N;
   control?: Control<F>;
   defaultValue?: FieldPathValue<F, N>;

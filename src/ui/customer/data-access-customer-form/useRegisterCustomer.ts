@@ -23,8 +23,7 @@ const useRegisterCustomer = () => {
       queryClient.invalidateQueries({ queryKey: ["customersForContract"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "고객 정보 등록에 실패했습니다.";
+      const text = error?.response?.data?.message || "고객 정보 등록에 실패했습니다.";
       openConfirmModal({
         text,
       });

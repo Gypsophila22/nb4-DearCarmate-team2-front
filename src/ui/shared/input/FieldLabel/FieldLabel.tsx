@@ -9,11 +9,7 @@ type FieldLabelProps = {
   required?: boolean;
 };
 
-const FieldLabel = ({
-  label,
-  marginBottom = "12px",
-  required = false,
-}: FieldLabelProps) => {
+const FieldLabel = ({ label, marginBottom = "12px", required = false }: FieldLabelProps) => {
   return (
     <div className={cx("container")} style={{ marginBottom }}>
       {required ? "*" : ""}

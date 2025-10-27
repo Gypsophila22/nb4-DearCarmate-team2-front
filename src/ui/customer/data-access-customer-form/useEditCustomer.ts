@@ -1,12 +1,7 @@
 import { AxiosError } from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { editCustomer } from "@shared/api";
-import {
-  AxiosErrorData,
-  CustomerFormInput,
-  CustomerType,
-  OffsetPagination,
-} from "@shared/types";
+import { AxiosErrorData, CustomerFormInput, CustomerType, OffsetPagination } from "@shared/types";
 import useConfirmModal from "@ui/shared/modal/confirm-modal/useConfirmModal";
 import { useCustomerContext } from "../util-customer-context/CustomerContext";
 
@@ -29,8 +24,10 @@ const useEditCustomer = () => {
       openConfirmModal({
         text: "고객 정보 수정에 성공했습니다.",
       });
-      const queryData: OffsetPagination<CustomerType> | undefined =
-        queryClient.getQueryData(["customers", { keyword, page, searchBy }]);
+      const queryData: OffsetPagination<CustomerType> | undefined = queryClient.getQueryData([
+        "customers",
+        { keyword, page, searchBy },
+      ]);
       if (!queryData) return;
       queryClient.setQueryData(["customers", { keyword, page, searchBy }], {
         ...queryData,
@@ -44,8 +41,7 @@ const useEditCustomer = () => {
       queryClient.invalidateQueries({ queryKey: ["customersForContract"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "고객 정보 수정에 실패했습니다.";
+      const text = error?.response?.data?.message || "고객 정보 수정에 실패했습니다.";
       openConfirmModal({
         text,
       });

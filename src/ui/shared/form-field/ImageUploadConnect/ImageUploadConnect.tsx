@@ -55,12 +55,7 @@ const ImageUploadConnect = ({ name }: ImageUploadConnectProps) => {
             {/* TODO-2: label 태그 eslint 에러 해결 */}
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>
-              <input
-                type="file"
-                accept="image/*"
-                hidden
-                onChange={handleUploadImage}
-              />
+              <input type="file" accept="image/*" hidden onChange={handleUploadImage} />
               <div className={cx("editButton")}>
                 <Icon name="edit-button" width={48} height={48} />
               </div>

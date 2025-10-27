@@ -9,10 +9,10 @@ import {
 } from "react-hook-form";
 import TextField, { TextFieldProps } from "../input/TextField/TextField";
 
-type TextFieldConnectProps<
-  F extends FieldValues,
-  N extends FieldPath<F>,
-> = Omit<TextFieldProps, "value" | "error" | "onChange" | "helperText"> & {
+type TextFieldConnectProps<F extends FieldValues, N extends FieldPath<F>> = Omit<
+  TextFieldProps,
+  "value" | "error" | "onChange" | "helperText"
+> & {
   name: N;
   control?: Control<F>;
   defaultValue?: FieldPathValue<F, N>;

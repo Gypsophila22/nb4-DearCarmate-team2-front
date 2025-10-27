@@ -15,10 +15,7 @@ type ContractDocumentRegisterFormProps = {
   onSubmit: (data: ContractDocumentRegisterFormInput) => void;
 };
 
-const ContractDocumentRegisterForm = ({
-  onClose,
-  onSubmit,
-}: ContractDocumentRegisterFormProps) => {
+const ContractDocumentRegisterForm = ({ onClose, onSubmit }: ContractDocumentRegisterFormProps) => {
   const methods = useForm<ContractDocumentRegisterFormInput>({
     defaultValues: { contractDocuments: [] },
   });

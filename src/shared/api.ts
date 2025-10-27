@@ -164,17 +164,14 @@ export const getCompanies = async ({
   searchBy: SearchByCompany;
   keyword: string;
 }) => {
-  const response = await axios.get<OffsetPagination<CompanyType>>(
-    "/companies",
-    {
-      params: {
-        page,
-        pageSize,
-        searchBy,
-        keyword,
-      },
+  const response = await axios.get<OffsetPagination<CompanyType>>("/companies", {
+    params: {
+      page,
+      pageSize,
+      searchBy,
+      keyword,
     },
-  );
+  });
   return response.data;
 };
 
@@ -189,17 +186,14 @@ export const getCompanyUsers = async ({
   searchBy: SearchByUser;
   keyword: string;
 }) => {
-  const response = await axios.get<OffsetPagination<CompanyUserType>>(
-    "/companies/users",
-    {
-      params: {
-        page,
-        pageSize,
-        searchBy,
-        keyword,
-      },
+  const response = await axios.get<OffsetPagination<CompanyUserType>>("/companies/users", {
+    params: {
+      page,
+      pageSize,
+      searchBy,
+      keyword,
     },
-  );
+  });
   return response.data;
 };
 
@@ -230,17 +224,14 @@ export const getCustomers = async ({
   searchBy: SearchByCustomer;
   keyword: string;
 }) => {
-  const response = await axios.get<OffsetPagination<CustomerType>>(
-    "/customers",
-    {
-      params: {
-        page,
-        pageSize,
-        searchBy,
-        keyword,
-      },
+  const response = await axios.get<OffsetPagination<CustomerType>>("/customers", {
+    params: {
+      page,
+      pageSize,
+      searchBy,
+      keyword,
     },
-  );
+  });
   return response.data;
 };
 
@@ -280,10 +271,7 @@ export type ContractStatusEditFormInput = {
   resolutionDate?: string | null;
 };
 
-export const editContractStatus = async (
-  id: number,
-  data: ContractStatusEditFormInput,
-) => {
+export const editContractStatus = async (id: number, data: ContractStatusEditFormInput) => {
   const response = await axios.patch<ContractType>(`/contracts/${id}`, data);
   return response.data;
 };
@@ -340,24 +328,19 @@ export const getContractDocuments = async ({
   searchBy: SearchByContractDocument;
   keyword: string;
 }) => {
-  const response = await axios.get<OffsetPagination<ContractDocumentType>>(
-    "/contractDocuments",
-    {
-      params: {
-        page,
-        pageSize,
-        searchBy,
-        keyword,
-      },
+  const response = await axios.get<OffsetPagination<ContractDocumentType>>("/contractDocuments", {
+    params: {
+      page,
+      pageSize,
+      searchBy,
+      keyword,
     },
-  );
+  });
   return response.data;
 };
 
 export const getDraftsForContractDocument = async () => {
-  const response = await axios.get<ItemForDropdown[]>(
-    "/contractDocuments/draft",
-  );
+  const response = await axios.get<ItemForDropdown[]>("/contractDocuments/draft");
   return response.data;
 };
 
@@ -375,9 +358,7 @@ export const getDashboardData = async () => {
 };
 
 // File upload related APIs
-export const uploadFile = async (
-  file: File,
-): Promise<{ contractDocumentId: number }> => {
+export const uploadFile = async (file: File): Promise<{ contractDocumentId: number }> => {
   const formData = new FormData();
   formData.append("file", file);
   const response = await axios.postForm<{ contractDocumentId: number }>(
@@ -387,14 +368,9 @@ export const uploadFile = async (
   return response.data;
 };
 
-export const uploadImage = async (
-  file: File,
-): Promise<{ imageUrl: string }> => {
+export const uploadImage = async (file: File): Promise<{ imageUrl: string }> => {
   const formData = new FormData();
   formData.append("file", file);
-  const response = await axios.postForm<{ imageUrl: string }>(
-    "/images/upload",
-    formData,
-  );
+  const response = await axios.postForm<{ imageUrl: string }>("/images/upload", formData);
   return response.data;
 };

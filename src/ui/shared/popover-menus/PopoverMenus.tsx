@@ -41,12 +41,7 @@ const PopoverMenus = forwardRef<HTMLDialogElement, PopoverMenusProps>(
         <div className={cx("selectMenu")}>
           {searchItems.map(({ text, onClick }, idx) => {
             return (
-              <button
-                className={cx("item")}
-                type="button"
-                onClick={onClick}
-                key={`${text}-${idx}`}
-              >
+              <button className={cx("item")} type="button" onClick={onClick} key={`${text}-${idx}`}>
                 <p className={cx("text")}>{text}</p>
               </button>
             );

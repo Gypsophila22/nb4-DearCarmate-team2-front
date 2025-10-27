@@ -19,10 +19,7 @@ type ProviderProps = {
   keyword: string;
 };
 
-const UserContextProvider = ({
-  children,
-  ...value
-}: PropsWithChildren<ProviderProps>) => {
+const UserContextProvider = ({ children, ...value }: PropsWithChildren<ProviderProps>) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 

@@ -6,18 +6,10 @@ const formatDashboardMoney = (value: number) => {
     { unit: "경", value: 10000000000000000 },
   ];
 
-  for (
-    let checkingIndex = units.length - 1;
-    checkingIndex >= 0;
-    checkingIndex--
-  ) {
+  for (let checkingIndex = units.length - 1; checkingIndex >= 0; checkingIndex--) {
     if (value >= units[checkingIndex].value) {
       const devidedValue = value / units[checkingIndex].value;
-      return (
-        devidedValue.toFixed(devidedValue < 10 ? 1 : 0) +
-        units[checkingIndex].unit +
-        " 원"
-      );
+      return devidedValue.toFixed(devidedValue < 10 ? 1 : 0) + units[checkingIndex].unit + " 원";
     }
   }
 

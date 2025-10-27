@@ -33,12 +33,7 @@ const CarsInfo = ({ keyword, page, searchBy, status }: CarsInfoProps) => {
 
   return (
     <div>
-      <CarContextProvider
-        page={page}
-        searchBy={searchBy}
-        keyword={keyword}
-        status={status}
-      >
+      <CarContextProvider page={page} searchBy={searchBy} keyword={keyword} status={status}>
         <CarsInfoTable data={data} />
       </CarContextProvider>
       {data.length > 0 && (

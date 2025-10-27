@@ -60,9 +60,7 @@ const CarsInfoTable = ({ data }: CarsInfoTableProps) => {
                 }}
               >
                 {columns.map((column) => (
-                  <TableCell key={column.key}>
-                    {processedRecord[column.key]}
-                  </TableCell>
+                  <TableCell key={column.key}>{processedRecord[column.key]}</TableCell>
                 ))}
                 <TableCell isLast>
                   <CarOptionButtons car={record} />

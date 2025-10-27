@@ -29,10 +29,8 @@ const ContractOptionKebab = ({ contract }: ContractOptionKebabProps) => {
   const { mutate: editContract } = useEditContract();
   const { mutate: deleteContract } = useDeleteContract();
 
-  const getMenu = (
-    status: ContractStatus,
-  ): Array<{ text: string; onClick: () => void }> => {
-    let menu = [];
+  const getMenu = (status: ContractStatus): Array<{ text: string; onClick: () => void }> => {
+    const menu = [];
     if (
       status === ContractStatus.carInspection ||
       status === ContractStatus.priceNegotiation ||

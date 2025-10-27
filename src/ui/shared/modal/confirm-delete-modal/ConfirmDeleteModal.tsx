@@ -21,8 +21,7 @@ const ConfirmDeleteModal = ({
     <div className={cx("container")}>
       <h3 className={cx("title")}>{`${deleteType} 정보 삭제`}</h3>
       <p className={cx("text")}>
-        <span className={cx("item")}>{itemName}</span>의 정보를
-        삭제하시겠습니까?
+        <span className={cx("item")}>{itemName}</span>의 정보를 삭제하시겠습니까?
       </p>
       <div className={cx("buttonContainer")}>
         <Button

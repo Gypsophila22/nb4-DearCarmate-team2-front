@@ -53,9 +53,7 @@ instance.interceptors.response.use(
   (response) => {
     const { method, url } = response.config;
     const { status } = response;
-    console.log(
-      `🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`,
-    );
+    console.log(`🚁 [API] ${method?.toUpperCase()} ${url} | Response ${status}`);
     return response;
   },
   async (error: AxiosError<AxiosErrorData> | Error): Promise<AxiosError> => {
@@ -101,8 +99,7 @@ instance.interceptors.response.use(
           refreshToken: string;
         }>("/auth/refresh", { refreshToken });
 
-        const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
-          tokens;
+        const { accessToken: newAccessToken, refreshToken: newRefreshToken } = tokens;
 
         // 쿠키/헤더 갱신
         setTokenCookies(newAccessToken, newRefreshToken);

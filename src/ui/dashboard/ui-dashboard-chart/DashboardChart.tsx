@@ -1,12 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./DashboardChart.module.scss";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  BarElement,
-  Tooltip,
-  LinearScale,
-} from "chart.js";
+import { Chart as ChartJS, CategoryScale, BarElement, Tooltip, LinearScale } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import getOptions from "./getOptions";
 import { DashboardChartType } from "@shared/types";

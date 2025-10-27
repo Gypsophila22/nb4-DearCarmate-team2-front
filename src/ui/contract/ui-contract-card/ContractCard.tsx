@@ -14,15 +14,7 @@ type ContractCardProps = {
 };
 
 const ContractCard = ({ data }: ContractCardProps) => {
-  const {
-    car,
-    customer,
-    user,
-    status,
-    resolutionDate,
-    meetings,
-    contractPrice,
-  } = data;
+  const { car, customer, user, status, resolutionDate, meetings, contractPrice } = data;
   const { dragRef, isDragging, isLoading } = useContractDrag(data, status);
 
   return (
@@ -37,18 +29,14 @@ const ContractCard = ({ data }: ContractCardProps) => {
       <div className={cx("body")}>
         <div className={cx("field", "price")}>
           <Icon name="price" width={18} height={18} />
-          <h4 className={cx("text")}>
-            {`${contractPrice.toLocaleString()}원`}
-          </h4>
+          <h4 className={cx("text")}>{`${contractPrice.toLocaleString()}원`}</h4>
         </div>
         <div className={cx("field", "user")}>
           <Icon name="manager" width={18} height={18} />
           <h4 className={cx("text")}>{user.name}</h4>
         </div>
       </div>
-      <p className={cx("date")}>
-        {formatDateField(status, resolutionDate, meetings)}
-      </p>
+      <p className={cx("date")}>{formatDateField(status, resolutionDate, meetings)}</p>
       {isLoading && <GlobalLoading />}
     </div>
   );

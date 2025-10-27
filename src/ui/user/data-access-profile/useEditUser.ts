@@ -9,12 +9,7 @@ const useEditUser = () => {
   const { openConfirmModal } = useConfirmModal();
   const setUser = useUserStore.use.setUser();
 
-  const mutation = useMutation<
-    UserInfo,
-    AxiosError<AxiosErrorData>,
-    ProfileFormInput,
-    unknown
-  >({
+  const mutation = useMutation<UserInfo, AxiosError<AxiosErrorData>, ProfileFormInput, unknown>({
     mutationFn: async (data) => await editUser(data),
     onSuccess: (data) => {
       openConfirmModal({
@@ -23,8 +18,7 @@ const useEditUser = () => {
       setUser(data);
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "개인정보 수정에 실패했습니다.";
+      const text = error?.response?.data?.message || "개인정보 수정에 실패했습니다.";
       openConfirmModal({
         text,
       });

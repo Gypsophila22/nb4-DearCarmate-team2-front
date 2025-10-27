@@ -7,10 +7,7 @@ type TableRowProps = {} & React.ComponentPropsWithoutRef<"tr">;
 
 export const TableRow = ({ children, ...restProps }: TableRowProps) => {
   return (
-    <tr
-      className={cx("row", { rowClick: Boolean(restProps.onClick) })}
-      {...restProps}
-    >
+    <tr className={cx("row", { rowClick: Boolean(restProps.onClick) })} {...restProps}>
       {children}
     </tr>
   );

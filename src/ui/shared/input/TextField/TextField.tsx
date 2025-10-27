@@ -15,27 +15,12 @@ export type TextFieldProps = {
 } & React.ComponentPropsWithoutRef<"input">;
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
-  (
-    {
-      height,
-      error = false,
-      helperText,
-      leftIcon,
-      rightIcon,
-      className,
-      ...inputProps
-    },
-    ref,
-  ) => {
+  ({ height, error = false, helperText, leftIcon, rightIcon, className, ...inputProps }, ref) => {
     return (
       <div className={cx("container")}>
         <div className={cx("wrapper")} style={{ height }}>
           {leftIcon && leftIcon}
-          <input
-            ref={ref}
-            className={cx("input", className, { error })}
-            {...inputProps}
-          />
+          <input ref={ref} className={cx("input", className, { error })} {...inputProps} />
           {rightIcon && rightIcon}
         </div>
         {helperText && <Hint message={helperText} />}

@@ -26,8 +26,7 @@ const BulkUpload = () => {
       setIsLoading(true);
       const formData = new FormData();
       formData.append("file", file);
-      const bulkUpload =
-        selectedTabIndex === 0 ? bulkUploadCustomers : bulkUploadCars;
+      const bulkUpload = selectedTabIndex === 0 ? bulkUploadCustomers : bulkUploadCars;
       await bulkUpload(formData);
       openConfirmModal({ text: "파일 업로드에 성공했습니다." });
       queryClient.invalidateQueries({
@@ -66,12 +65,7 @@ const BulkUpload = () => {
         <label className={cx("input")}>
           <input type="file" accept=".csv" hidden onChange={handleUploadFile} />
           <div className={cx("content")}>
-            <Image
-              src="/images/upload.png"
-              width={60}
-              height={60}
-              alt="업로드 아이콘 이미지"
-            />
+            <Image src="/images/upload.png" width={60} height={60} alt="업로드 아이콘 이미지" />
             <div className={cx("text")}>CSV 파일을 업로드할 수 있습니다.</div>
           </div>
         </label>

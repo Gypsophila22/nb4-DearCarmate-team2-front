@@ -31,9 +31,7 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
   });
   const prevManufacturerRef = useRef(defaultValues?.manufacturer);
   const carModel =
-    carModelsData.find(
-      ({ manufacturer }) => manufacturer === selectedManufacturer,
-    )?.model ?? [];
+    carModelsData.find(({ manufacturer }) => manufacturer === selectedManufacturer)?.model ?? [];
 
   useEffect(() => {
     const prevManufacturer = prevManufacturerRef.current;
@@ -53,8 +51,7 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
               name="carNumber"
               placeholder="차량 번호를 입력해 주세요"
               rules={{
-                validate: (value) =>
-                  value.trim() !== "" || "필수 입력사항입니다.",
+                validate: (value) => value.trim() !== "" || "필수 입력사항입니다.",
                 maxLength: { value: 20, message: "20자 이내로 입력해 주세요" },
               }}
             />
@@ -108,8 +105,7 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
                 defaultValue=""
                 rules={{
                   required: "필수 입력사항입니다.",
-                  validate: (value) =>
-                    parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
+                  validate: (value) => parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
                 }}
                 render={({ field, fieldState }) => (
                   <TextField
@@ -133,8 +129,7 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
                 defaultValue=""
                 rules={{
                   required: "필수 입력사항입니다.",
-                  validate: (value) =>
-                    parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
+                  validate: (value) => parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
                 }}
                 render={({ field, fieldState }) => (
                   <TextField
@@ -159,8 +154,7 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
               defaultValue=""
               rules={{
                 required: "필수 입력사항입니다.",
-                validate: (value) =>
-                  parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
+                validate: (value) => parseInt(value, 10) >= 0 || "유효하지 않은 값입니다.",
               }}
               render={({ field, fieldState }) => (
                 <TextField
@@ -179,17 +173,11 @@ const CarForm = ({ onSubmit, onCancel, defaultValues }: CarFormProps) => {
           </div>
           <div>
             <FieldLabel label="차량 설명" />
-            <TextAreaConnect
-              name="explanation"
-              placeholder="차량 설명 내용을 입력해 주세요"
-            />
+            <TextAreaConnect name="explanation" placeholder="차량 설명 내용을 입력해 주세요" />
           </div>
           <div>
             <FieldLabel label="사고상세" />
-            <TextFieldConnect
-              name="accidentDetails"
-              placeholder="사고상세 내용을 입력해 주세요"
-            />
+            <TextFieldConnect name="accidentDetails" placeholder="사고상세 내용을 입력해 주세요" />
           </div>
         </div>
         <div className={cx("buttonContainer")}>

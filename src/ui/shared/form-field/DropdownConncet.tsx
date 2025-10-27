@@ -7,11 +7,7 @@ type DropdownConncetProps = {
   rules?: ControllerProps["rules"];
 } & Omit<DropdownProps<string | number>, "type" | "onSelect" | "currentData">;
 
-const DropdownConncet = ({
-  name,
-  rules,
-  ...dropdownProps
-}: DropdownConncetProps) => {
+const DropdownConncet = ({ name, rules, ...dropdownProps }: DropdownConncetProps) => {
   const { setValue } = useFormContext();
 
   return (

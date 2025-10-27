@@ -1,10 +1,6 @@
 import classNames from "classnames/bind";
 import Icon from "@ui/shared/icon/Icon";
-import {
-  ContractDocumentEditFormInput,
-  ContractDocumentType,
-  DocumentType,
-} from "@shared/types";
+import { ContractDocumentEditFormInput, ContractDocumentType, DocumentType } from "@shared/types";
 import useFormModal from "@ui/shared/modal/form-modal/useFormModal";
 import { downloadContractDocument } from "@shared/api";
 import ContractDocumentEditForm from "../feature-contract-document-form/ContractDocumentEditForm";

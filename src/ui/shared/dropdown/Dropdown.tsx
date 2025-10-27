@@ -31,8 +31,7 @@ const Dropdown = <T extends string | number>({
   const selectedFilter = filters.find((filter) => filter.data === currentData);
 
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const { popoverRef, isOpened, closePopover, togglePopover } =
-    usePopover(triggerRef);
+  const { popoverRef, isOpened, closePopover, togglePopover } = usePopover(triggerRef);
 
   const items = useMemo(
     () =>

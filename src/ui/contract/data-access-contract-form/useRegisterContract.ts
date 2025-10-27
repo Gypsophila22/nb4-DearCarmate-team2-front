@@ -26,8 +26,7 @@ const useRegisterContract = () => {
       router.push("/");
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "계약 건 등록에 실패했습니다.";
+      const text = error?.response?.data?.message || "계약 건 등록에 실패했습니다.";
       openConfirmModal({
         text,
       });

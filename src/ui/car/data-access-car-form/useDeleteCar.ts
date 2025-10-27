@@ -15,19 +15,16 @@ const useDeleteCar = () => {
   const router = useRouter();
   const { updateQueryURL } = useUpdateQueryURL();
 
-  const mutation = useMutation<
-    { message: string },
-    AxiosError<AxiosErrorData>,
-    number,
-    unknown
-  >({
+  const mutation = useMutation<{ message: string }, AxiosError<AxiosErrorData>, number, unknown>({
     mutationFn: async (id) => await deleteCar(id),
     onSuccess: async () => {
       openConfirmModal({
         text: "차량 정보 삭제에 성공했습니다.",
       });
-      const queryData: OffsetPagination<CarType> | undefined =
-        queryClient.getQueryData(["cars", { keyword, page, searchBy, status }]);
+      const queryData: OffsetPagination<CarType> | undefined = queryClient.getQueryData([
+        "cars",
+        { keyword, page, searchBy, status },
+      ]);
       if (!queryData) return;
       const { data } = queryData;
       if (data.length <= 1 && page > 1)
@@ -37,8 +34,7 @@ const useDeleteCar = () => {
       queryClient.invalidateQueries({ queryKey: ["cars"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "차량 정보 삭제에 실패했습니다.";
+      const text = error?.response?.data?.message || "차량 정보 삭제에 실패했습니다.";
       openConfirmModal({
         text,
       });

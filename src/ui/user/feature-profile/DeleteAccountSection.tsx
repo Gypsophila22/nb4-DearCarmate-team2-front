@@ -14,8 +14,7 @@ export default function DeleteAccountSection() {
   const router = useRouter();
   const user = useUserStore.use.user();
   const { mutate } = useDeleteMe();
-  const { openConfirmDeleteModal, closeConfirmDeleteModal } =
-    useConfirmDeleteModal();
+  const { openConfirmDeleteModal, closeConfirmDeleteModal } = useConfirmDeleteModal();
   const { openConfirmModal } = useConfirmModal();
 
   const authCheckDialogRef = useRef<HTMLDialogElement>(null);
@@ -36,10 +35,7 @@ export default function DeleteAccountSection() {
       }, 0);
       return true; // 성공 → AuthCheckModal 닫힘
     } catch (err: any) {
-      const msg =
-        err?.response?.data?.message ??
-        err?.message ??
-        "비밀번호가 올바르지 않습니다.";
+      const msg = err?.response?.data?.message ?? err?.message ?? "비밀번호가 올바르지 않습니다.";
       // 실패 → 문자열 반환해서 AuthCheckModal에서 onErrorMessage로 전달
       return msg;
     }
@@ -78,10 +74,7 @@ export default function DeleteAccountSection() {
           // 모달 전환 타이밍 겹침 방지
           setTimeout(() => {
             openConfirmModal({
-              text:
-                typeof msg === "string"
-                  ? msg
-                  : "현재 비밀번호가 맞지 않습니다.",
+              text: typeof msg === "string" ? msg : "현재 비밀번호가 맞지 않습니다.",
               // onCloseSuccess?: 필요하면 여기서 추가
             });
           }, 0);

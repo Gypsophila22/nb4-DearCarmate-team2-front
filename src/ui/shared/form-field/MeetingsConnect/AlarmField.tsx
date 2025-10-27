@@ -17,10 +17,7 @@ type AlarmFieldProps = {
 
 const AlarmField = ({ meeting, onRemove, onToggleAlarm }: AlarmFieldProps) => {
   const todayAlarmDate = getAlarmDate(new Date(meeting.date), AlarmDay.today);
-  const yesterdayAlarmDate = getAlarmDate(
-    new Date(meeting.date),
-    AlarmDay.yesterday,
-  );
+  const yesterdayAlarmDate = getAlarmDate(new Date(meeting.date), AlarmDay.yesterday);
 
   const isTodayAlarmActive = meeting.alarms.includes(todayAlarmDate);
   const isYesterdayAlarmActive = meeting.alarms.includes(yesterdayAlarmDate);
@@ -28,10 +25,7 @@ const AlarmField = ({ meeting, onRemove, onToggleAlarm }: AlarmFieldProps) => {
   return (
     <div className={cx("alarmField")}>
       <div className={cx("top")}>
-        <TextField
-          value={format(new Date(meeting.date), "yyyy/MM/dd HH:mm")}
-          disabled
-        />
+        <TextField value={format(new Date(meeting.date), "yyyy/MM/dd HH:mm")} disabled />
         <MinusButton onClick={() => onRemove(meeting.id)} />
       </div>
       <div className={cx("bottom")}>
@@ -41,14 +35,9 @@ const AlarmField = ({ meeting, onRemove, onToggleAlarm }: AlarmFieldProps) => {
         </div>
         <div className={cx("checkboxField")}>
           <div className={cx("checkbox")}>
-            <button
-              type="button"
-              onClick={() => onToggleAlarm(meeting.id, AlarmDay.today)}
-            >
+            <button type="button" onClick={() => onToggleAlarm(meeting.id, AlarmDay.today)}>
               <Icon
-                name={
-                  isTodayAlarmActive ? "checkbox-active" : "checkbox-inactive"
-                }
+                name={isTodayAlarmActive ? "checkbox-active" : "checkbox-inactive"}
                 width={24}
                 height={24}
               />
@@ -56,16 +45,9 @@ const AlarmField = ({ meeting, onRemove, onToggleAlarm }: AlarmFieldProps) => {
             <span>당일 오전 9시</span>
           </div>
           <div className={cx("checkbox")}>
-            <button
-              type="button"
-              onClick={() => onToggleAlarm(meeting.id, AlarmDay.yesterday)}
-            >
+            <button type="button" onClick={() => onToggleAlarm(meeting.id, AlarmDay.yesterday)}>
               <Icon
-                name={
-                  isYesterdayAlarmActive
-                    ? "checkbox-active"
-                    : "checkbox-inactive"
-                }
+                name={isYesterdayAlarmActive ? "checkbox-active" : "checkbox-inactive"}
                 width={24}
                 height={24}
               />

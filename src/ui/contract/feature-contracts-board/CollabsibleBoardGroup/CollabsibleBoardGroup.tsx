@@ -15,11 +15,7 @@ type CollabsibleBoardGroupProps = {
   totalItemCount: number;
 };
 
-const CollabsibleBoardGroup = ({
-  cards,
-  status,
-  totalItemCount,
-}: CollabsibleBoardGroupProps) => {
+const CollabsibleBoardGroup = ({ cards, status, totalItemCount }: CollabsibleBoardGroupProps) => {
   const { dropRef, isOver } = useContractDrop(status);
 
   const { popoverRef, isOpened, togglePopover } = usePopover(dropRef);
@@ -33,17 +29,11 @@ const CollabsibleBoardGroup = ({
         className={cx("trigger", { isOpened, isOver })}
       >
         <Icon
-          name={
-            status === ContractStatus.contractSuccessful
-              ? "box-blue"
-              : "box-red"
-          }
+          name={status === ContractStatus.contractSuccessful ? "box-blue" : "box-red"}
           width={24}
           height={24}
         />
-        <div className={cx("title")}>
-          {`${CONTRACT_STATUS_MAP[status]} (${totalItemCount})`}
-        </div>
+        <div className={cx("title")}>{`${CONTRACT_STATUS_MAP[status]} (${totalItemCount})`}</div>
       </button>
       <div className={cx("popoverWrapper")}>
         <ContractListPopover

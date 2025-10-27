@@ -20,12 +20,7 @@ const CustomerRegisterButton = ({}: CustomerRegisterButtonProps) => {
       onClick={() => {
         openFormModal({
           title: "고객 정보 등록",
-          form: (
-            <CustomerForm
-              onSubmit={handleRegisterCar}
-              onCancel={closeFormModal}
-            />
-          ),
+          form: <CustomerForm onSubmit={handleRegisterCar} onCancel={closeFormModal} />,
         });
       }}
       size="small"

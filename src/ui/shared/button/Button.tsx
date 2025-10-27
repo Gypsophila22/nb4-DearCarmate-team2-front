@@ -9,19 +9,9 @@ type ButtonProps = {
   theme: "red" | "gray" | "outline";
 } & React.ComponentPropsWithoutRef<"button">;
 
-const Button = ({
-  children,
-  size,
-  theme,
-  className,
-  ...buttonProps
-}: ButtonProps) => {
+const Button = ({ children, size, theme, className, ...buttonProps }: ButtonProps) => {
   return (
-    <button
-      className={cx("container", size, theme, className)}
-      type="button"
-      {...buttonProps}
-    >
+    <button className={cx("container", size, theme, className)} type="button" {...buttonProps}>
       {children}
     </button>
   );

@@ -20,8 +20,7 @@ const useCheckPassword = () => {
     },
     onSuccess: () => {},
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "회원 정보 확인에 실패했습니다.";
+      const text = error?.response?.data?.message || "회원 정보 확인에 실패했습니다.";
       openConfirmModal({
         text,
       });

@@ -15,19 +15,16 @@ const useDeleteCompany = () => {
   const router = useRouter();
   const { updateQueryURL } = useUpdateQueryURL();
 
-  const mutation = useMutation<
-    { message: string },
-    AxiosError<AxiosErrorData>,
-    number,
-    unknown
-  >({
+  const mutation = useMutation<{ message: string }, AxiosError<AxiosErrorData>, number, unknown>({
     mutationFn: async (id) => await deleteCompany(id),
     onSuccess: async () => {
       openConfirmModal({
         text: "기업 정보 삭제에 성공했습니다.",
       });
-      const queryData: OffsetPagination<CompanyType> | undefined =
-        queryClient.getQueryData(["companies", { keyword, page, searchBy }]);
+      const queryData: OffsetPagination<CompanyType> | undefined = queryClient.getQueryData([
+        "companies",
+        { keyword, page, searchBy },
+      ]);
       if (!queryData) return;
       const { data } = queryData;
       if (data.length <= 1 && page > 1)
@@ -37,8 +34,7 @@ const useDeleteCompany = () => {
       queryClient.invalidateQueries({ queryKey: ["companies"] });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "기업 정보 삭제에 실패했습니다.";
+      const text = error?.response?.data?.message || "기업 정보 삭제에 실패했습니다.";
       openConfirmModal({
         text,
       });

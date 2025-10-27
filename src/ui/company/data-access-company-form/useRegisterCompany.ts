@@ -8,12 +8,7 @@ const useRegisterCompany = () => {
   const { openConfirmModal } = useConfirmModal();
   const queryClient = useQueryClient();
 
-  const mutation = useMutation<
-    CompanyType,
-    AxiosError<AxiosErrorData>,
-    CompanyFormInput,
-    unknown
-  >({
+  const mutation = useMutation<CompanyType, AxiosError<AxiosErrorData>, CompanyFormInput, unknown>({
     mutationFn: registerCompany,
     onSuccess: () => {
       openConfirmModal({
@@ -24,8 +19,7 @@ const useRegisterCompany = () => {
       });
     },
     onError: (error) => {
-      const text =
-        error?.response?.data?.message || "기업 등록에 실패했습니다.";
+      const text = error?.response?.data?.message || "기업 등록에 실패했습니다.";
       openConfirmModal({
         text,
       });

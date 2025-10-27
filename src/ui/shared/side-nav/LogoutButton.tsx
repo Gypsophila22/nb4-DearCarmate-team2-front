@@ -27,11 +27,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <button
-      disabled={isLoggingOut}
-      onClick={handleClickLogoutButton}
-      className={cx("button")}
-    >
+    <button disabled={isLoggingOut} onClick={handleClickLogoutButton} className={cx("button")}>
       로그아웃
     </button>
   );

@@ -35,8 +35,7 @@ const getOptions = (type: "contracts" | "sales") => {
           stepSize: type === "contracts" ? 1 : 100,
           callback: (tick, index) => {
             const value = type === "contracts" ? tick : tick.toLocaleString();
-            if (index === 0)
-              return `${value}(${type === "contracts" ? "건" : "만 원"})`;
+            if (index === 0) return `${value}(${type === "contracts" ? "건" : "만 원"})`;
             return value;
           },
         },
@@ -56,8 +55,7 @@ const getOptions = (type: "contracts" | "sales") => {
         bodyFont: { size: 10, weight: 400 },
         displayColors: false,
         callbacks: {
-          label: (ctx) =>
-            `${ctx.formattedValue}${type === "contracts" ? "건" : "만 원"}`,
+          label: (ctx) => `${ctx.formattedValue}${type === "contracts" ? "건" : "만 원"}`,
         },
       },
     },

@@ -25,9 +25,7 @@ const columns: Column<Omit<ContractDocumentType, "documents">>[] = [
   { key: "carNumber", title: "차량번호" },
 ];
 
-const ContractDocumentListTable = ({
-  data,
-}: ContractDocumentListTableProps) => {
+const ContractDocumentListTable = ({ data }: ContractDocumentListTableProps) => {
   const isEmpty = data.length === 0;
 
   return (
@@ -54,9 +52,7 @@ const ContractDocumentListTable = ({
             return (
               <TableRow key={record.id}>
                 {columns.map((column) => (
-                  <TableCell key={column.key}>
-                    {processedRecord[column.key]}
-                  </TableCell>
+                  <TableCell key={column.key}>{processedRecord[column.key]}</TableCell>
                 ))}
                 <TableCell isLast>
                   <ContractDocumentOptionButtons contractDocument={record} />

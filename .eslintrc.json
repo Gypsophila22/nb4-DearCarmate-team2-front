@@ -1,145 +1,63 @@
 {
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint",
-    "unused-imports",
-    "@tanstack/query"
+  "root": true,
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:prettier/recommended"
   ],
+  "plugins": ["@typescript-eslint", "unused-imports"],
   "ignorePatterns": ["**/*.js"],
   "overrides": [
     {
-      "files": ["*.json"],
-      "parser": "jsonc-eslint-parser",
-      "rules": {}
-    },
-    {
-      "files": ["*.js"],
-      "parserOptions": {
-        "ecmaVersion": 13
-      },
-      "rules": {}
-    },
-    {
       "files": ["*.ts", "*.tsx"],
-      "extends": [
-        "plugin:react-hooks/recommended",
-        "next",
-        "next/core-web-vitals",
-        "plugin:react/recommended",
-        "plugin:react/jsx-runtime",
-        "plugin:@tanstack/eslint-plugin-query/recommended"
-      ],
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint", "unused-imports"],
       "parserOptions": {
         "project": "./tsconfig.json",
-        "ecmaFeatures": {
-          "jsx": true
-        },
         "ecmaVersion": 13,
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": { "jsx": true }
       },
       "rules": {
-        "@next/next/no-html-link-for-pages": "off",
-        "@typescript-eslint/semi": ["error", "always"],
+        /* Prettier가 포맷 전담 */
+        "react/jsx-wrap-multilines": "off",
+        "quotes": "off",
+        "@typescript-eslint/quotes": "off",
         "semi": "off",
-        "@typescript-eslint/indent": [
-          "error",
-          2,
-          {
-            "ignoredNodes": ["TSTypeParameterInstantiation"],
-            "SwitchCase": 1
-          }
-        ],
-        "@typescript-eslint/no-unused-vars": [
+        "@typescript-eslint/semi": "off",
+
+        /* 타입/품질 관련(빌드 막지 않게 완화) */
+        "@typescript-eslint/ban-types": [
           "warn",
           {
-            "argsIgnorePattern": "^_"
+            "extendDefaults": true,
+            "types": { "{}": false }
           }
         ],
-        "react/function-component-definition": [
-          2,
-          {
-            "namedComponents": "arrow-function"
-          }
-        ],
-        "react/require-default-props": "off",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/jsx-key": "error",
-        "import/prefer-default-export": "off",
-        "no-restricted-exports": "off",
-        "radix": "off",
-        "default-case": "off",
-        "react/react-in-jsx-scope": "off",
-        "react/no-danger": "off",
-        "jsx-a11y/anchor-is-valid": "off",
-        "jsx-a11y/label-has-associated-control": [
-          "error",
-          { "assert": "either" }
-        ],
-        "jsx-a11y/no-noninteractive-element-interactions": "off",
-        "jsx-a11y/click-events-have-key-events": "off",
-        "arrow-body-style": "off",
-        "react/jsx-props-no-spreading": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "no-trailing-spaces": "error",
-        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+        "@typescript-eslint/no-explicit-any": "warn",
 
-        /* 따옴표: 쌍따옴표 허용 */
-        "quotes": ["error", "double", { "avoidEscape": true }],
-        "@typescript-eslint/quotes": "off",
-
-        "eol-last": ["error", "always"],
-        "react/jsx-max-props-per-line": [
-          "error",
-          { "maximum": 1, "when": "multiline" }
-        ],
-        "react/jsx-indent": ["error", 2],
-        "react/jsx-indent-props": ["error", 2],
-        "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
-        "react/jsx-closing-tag-location": "error",
-        "react/jsx-closing-bracket-location": "error",
-        "react/jsx-one-expression-per-line": "off",
-        "react/jsx-tag-spacing": [
-          "error",
-          { "beforeSelfClosing": "always", "beforeClosing": "never" }
-        ],
-        "react/jsx-curly-brace-presence": [
-          "error",
-          { "props": "never", "children": "never" }
-        ],
-        "react/self-closing-comp": "error",
-        "react/jsx-wrap-multilines": [
-          "error",
-          {
-            "declaration": "parens-new-line",
-            "assignment": "parens-new-line",
-            "return": "parens-new-line",
-            "arrow": "parens-new-line",
-            "condition": "parens-new-line",
-            "logical": "parens-new-line",
-            "prop": "parens-new-line"
-          }
-        ],
-        "react/no-unused-prop-types": "error",
+        /* 유용한 것들 */
         "unused-imports/no-unused-imports": "error",
-        "object-curly-spacing": ["error", "always"],
-        "object-curly-newline": [
-          "error",
-          { "multiline": true, "minProperties": 0, "consistent": true }
-        ],
-        "object-property-newline": [
-          "error",
-          { "allowAllPropertiesOnSameLine": true }
-        ],
-        "@next/next/no-img-element": "off",
-        "no-empty": ["error", { "allowEmptyCatch": true }],
-        "comma-dangle": ["error", "always-multiline"],
-        "function-paren-newline": ["error", "consistent"],
-        "consistent-return": "off",
-        "no-useless-rename": "error"
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { "argsIgnorePattern": "^_" }
+        ]
       }
     }
-  ]
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": false,
+        "semi": true,
+        "trailingComma": "all",
+        "printWidth": 100,
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }

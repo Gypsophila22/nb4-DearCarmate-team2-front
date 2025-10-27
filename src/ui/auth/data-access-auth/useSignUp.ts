@@ -9,11 +9,7 @@ const useSignUp = () => {
   const { mutate } = useSignIn();
   const { openConfirmModal } = useConfirmModal();
 
-  const mutation = useMutation<
-    UserInfo,
-    AxiosError<AxiosErrorData>,
-    SignUpFormInput
-  >({
+  const mutation = useMutation<UserInfo, AxiosError<AxiosErrorData>, SignUpFormInput>({
     mutationFn: signUp,
     onSuccess: async (data, { email, password }) => {
       await mutate({ email, password });

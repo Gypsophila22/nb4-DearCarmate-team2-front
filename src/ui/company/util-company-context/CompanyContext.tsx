@@ -19,13 +19,8 @@ type ProviderProps = {
   keyword: string;
 };
 
-const CompanyContextProvider = ({
-  children,
-  ...value
-}: PropsWithChildren<ProviderProps>) => {
-  return (
-    <CompanyContext.Provider value={value}>{children}</CompanyContext.Provider>
-  );
+const CompanyContextProvider = ({ children, ...value }: PropsWithChildren<ProviderProps>) => {
+  return <CompanyContext.Provider value={value}>{children}</CompanyContext.Provider>;
 };
 
 const useCompanyContext = () => useContext(CompanyContext);

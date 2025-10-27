@@ -7,9 +7,7 @@ const cx = classNames.bind(styles);
 
 type SignInUpPageLayoutProps = {};
 
-const SignInUpPageLayout = ({
-  children,
-}: PropsWithChildren<SignInUpPageLayoutProps>) => {
+const SignInUpPageLayout = ({ children }: PropsWithChildren<SignInUpPageLayoutProps>) => {
   return (
     <div className={cx("pageWrapper")}>
       <div className={cx("contentContainer")}>

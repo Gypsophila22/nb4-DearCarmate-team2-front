@@ -12,11 +12,7 @@ const useSignIn = () => {
   const setUser = useUserStore.use.setUser();
   const { openConfirmModal } = useConfirmModal();
 
-  const mutation = useMutation<
-    SignInResponse,
-    AxiosError<AxiosErrorData>,
-    SignInFormInput
-  >({
+  const mutation = useMutation<SignInResponse, AxiosError<AxiosErrorData>, SignInFormInput>({
     mutationFn: signIn,
     onSuccess: (data) => {
       const { accessToken, refreshToken, user } = data;

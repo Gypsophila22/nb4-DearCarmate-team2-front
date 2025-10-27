@@ -31,11 +31,7 @@ const CustomersInfo = ({ keyword, page, searchBy }: CustomersInfoProps) => {
 
   return (
     <div>
-      <CustomerContextProvider
-        page={page}
-        searchBy={searchBy}
-        keyword={keyword}
-      >
+      <CustomerContextProvider page={page} searchBy={searchBy} keyword={keyword}>
         <CustomersInfoTable data={data} />
       </CustomerContextProvider>
       {data.length > 0 && (

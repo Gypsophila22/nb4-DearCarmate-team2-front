@@ -14,10 +14,7 @@ const middleware = async (request: NextRequest) => {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  if (
-    refreshTokenCookie &&
-    (pathname === "/signin" || pathname === "/signup")
-  ) {
+  if (refreshTokenCookie && (pathname === "/signin" || pathname === "/signup")) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -27,6 +24,5 @@ const middleware = async (request: NextRequest) => {
 export default middleware;
 
 export const config = {
-  matcher:
-    "/((?!api|_next/static|_next/image|images|icons|favicon.ico|mockServiceWorker.js).*)",
+  matcher: "/((?!api|_next/static|_next/image|images|icons|favicon.ico|mockServiceWorker.js).*)",
 };

@@ -34,11 +34,7 @@ const ModalBase = ({
 
   return (
     <Portal selector={selector}>
-      <section
-        className={cx("overlay")}
-        id="overlay"
-        onClick={handleClickOverlay}
-      >
+      <section className={cx("overlay")} id="overlay" onClick={handleClickOverlay}>
         <div
           onKeyDown={(e) => {
             if (e.key === "Escape") {

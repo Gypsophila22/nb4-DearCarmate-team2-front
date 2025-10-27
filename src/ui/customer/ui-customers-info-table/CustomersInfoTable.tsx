@@ -37,10 +37,7 @@ const CustomersInfoTable = ({ data }: CustomersInfoTableProps) => {
         <TableHead>
           <TableRow>
             {columns.map((column) => (
-              <TableCell
-                key={column.key}
-                width={column.key === "email" ? "230px" : undefined}
-              >
+              <TableCell key={column.key} width={column.key === "email" ? "230px" : undefined}>
                 {column.title}
               </TableCell>
             ))}
@@ -63,9 +60,7 @@ const CustomersInfoTable = ({ data }: CustomersInfoTableProps) => {
                 }}
               >
                 {columns.map((column) => (
-                  <TableCell key={column.key}>
-                    {processedRecord[column.key]}
-                  </TableCell>
+                  <TableCell key={column.key}>{processedRecord[column.key]}</TableCell>
                 ))}
                 <TableCell isLast>
                   <CustomerOptionButtons customer={record} />
