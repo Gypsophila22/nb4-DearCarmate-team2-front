@@ -153,6 +153,13 @@ export const setAuthorization = (accessToken?: string) => {
   }
 };
 
+let isLoggedOut = false;
+
+/** 탈퇴/로그아웃 직후에는 자동 리프레시 시도를 막기 위해 호출하세요. */
+export function markLoggedOut() {
+  isLoggedOut = true;
+}
+
 /** 요청 인터셉터 */
 instance.interceptors.request.use(
   (config) => {
